@@ -1,0 +1,3539 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "environment": {
+      "name": "common-cpu.m46",
+      "type": "gcloud",
+      "uri": "gcr.io/deeplearning-platform-release/base-cpu:m46"
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.7.6"
+    },
+    "colab": {
+      "name": "CovidKaya Linelist Processing [DO NOT SHARE]",
+      "provenance": [],
+      "collapsed_sections": [],
+      "include_colab_link": true
+    },
+    "widgets": {
+      "application/vnd.jupyter.widget-state+json": {
+        "7ffc74114e0c4dfba713ad034ef2207e": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_a52d2a462e1e4d1abad0e5c9892480a0",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_27dfe0dcb182497c926a0b614be6f412",
+              "IPY_MODEL_6bfa8edab55540cd89fd612774b9c129"
+            ]
+          }
+        },
+        "a52d2a462e1e4d1abad0e5c9892480a0": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "27dfe0dcb182497c926a0b614be6f412": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_885fc403bb18483482f365ac8e53fde7",
+            "_dom_classes": [],
+            "description": "Pandas Apply: 100%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 42201,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 42201,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_0a6758a2fe3245a08ca3f4546a7ede11"
+          }
+        },
+        "6bfa8edab55540cd89fd612774b9c129": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_8ec733ede3c64f098714256239474038",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 42201/42201 [00:13&lt;00:00, 3184.75it/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_28991d642b5549d4854cdf01e1464012"
+          }
+        },
+        "885fc403bb18483482f365ac8e53fde7": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "0a6758a2fe3245a08ca3f4546a7ede11": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "8ec733ede3c64f098714256239474038": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "28991d642b5549d4854cdf01e1464012": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "98e79b53c3bc49f48d794e97903e7868": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_348b5f38354d466fa234104fd02c166d",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_b9911ec92d2a43548acf3a532ad10490",
+              "IPY_MODEL_ba1449fd3e604a718b43d40663025653"
+            ]
+          }
+        },
+        "348b5f38354d466fa234104fd02c166d": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "b9911ec92d2a43548acf3a532ad10490": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_d61855620e9f45c1ab320377396c3448",
+            "_dom_classes": [],
+            "description": "Pandas Apply: 100%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 47280,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 47280,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_907b93d2e3f04802bac4682ffcf7fd62"
+          }
+        },
+        "ba1449fd3e604a718b43d40663025653": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_ee0e6c1f6ed845c6aaec3ea5f9c48990",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 47280/47280 [00:48&lt;00:00, 970.07it/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_7577a7e0558a49a4bda0407b6e7df5e4"
+          }
+        },
+        "d61855620e9f45c1ab320377396c3448": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "907b93d2e3f04802bac4682ffcf7fd62": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "ee0e6c1f6ed845c6aaec3ea5f9c48990": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "7577a7e0558a49a4bda0407b6e7df5e4": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        }
+      }
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/celinagacias-tm/covid19ph-doh-data-dump/blob/master/notebooks/CovidKaya%20Linelist%20Processing\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "vK7ang0FWuNU",
+        "colab_type": "text"
+      },
+      "source": [
+        "# ✔️ Linelist Checks\n",
+        "\n",
+        "This notebook conducts the following steps after reading in the linelist\n",
+        "- Identification of duplicates\n",
+        "- Approximation of `proxyregion` based on the free text of disease reporting units\n",
+        "- Checks for the completeness and accuracy of dates, locations, and miscellaneous issues on age and sex\n",
+        "\n",
+        "# ❓ Are you manually deduping?\n",
+        "If you want to create files for manual deduplication, please enter a the number of people splitting the work below:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "tBB_3iUZbXGt",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "manual_checkers = 4"
+      ],
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "FUU1qSmu3vYr",
+        "colab_type": "text"
+      },
+      "source": [
+        "You'll see your files here.  \n",
+        "https://console.cloud.google.com/storage/browser/doh-covid-data-managers/manual_deduping/?forceOnBucketsSortingFiltering=false&project=doh-covid-dwh\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "MRMAL0eJaFxr",
+        "colab_type": "text"
+      },
+      "source": [
+        "# 💾 Initial Installs and Authentications\n",
+        "\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "qY3fi_buWuNW",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!pip install -q pandas_gbq fuzzywuzzy swifter slackclient\n",
+        "\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import pandas_gbq as gbq\n",
+        "import swifter\n",
+        "import warnings\n",
+        "from fuzzywuzzy import fuzz, process\n",
+        "\n",
+        "from datetime import timedelta, datetime as dt\n",
+        "import pytz"
+      ],
+      "execution_count": 116,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EyN7eILmaFQj",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Authenticate -- use your Gmail account\n",
+        "# Copy-paste the provided authentication key \n",
+        "from google.colab import auth\n",
+        "auth.authenticate_user()"
+      ],
+      "execution_count": 117,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5dbh6yqmaPv2",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "from google.cloud import bigquery\n",
+        "from google.cloud.bigquery import SchemaField\n",
+        "\n",
+        "PROJECT = 'doh-covid-dwh'\n",
+        "bq_client = bigquery.Client(PROJECT)"
+      ],
+      "execution_count": 118,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "9QpF51HeaVBk",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "from pydrive.auth import GoogleAuth\n",
+        "from pydrive.drive import GoogleDrive\n",
+        "from oauth2client.client import GoogleCredentials\n",
+        "\n",
+        "gauth = GoogleAuth()\n",
+        "gauth.credentials = GoogleCredentials.get_application_default()\n",
+        "drive = GoogleDrive(gauth)"
+      ],
+      "execution_count": 119,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "UDi0HcCnbMSV",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "## Import scripts from GCS\n",
+        "## ← You can edit them by clicking on the file directory to the left\n",
+        "\n",
+        "# GCS > local\n",
+        "!gsutil -q cp gs://doh-covid-data-managers/scripts/*.py .\n",
+        "\n",
+        "# local > GCS\n",
+        "# !gsutil -q cp *.py  gs://doh-covid-data-managers/scripts/"
+      ],
+      "execution_count": 120,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EO6HacsJWuNd",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Create strings that represent yesterday, today, tomorrow\n",
+        "import scripts\n",
+        "pht_date_yday, pht_date_today, pht_date_tom = scripts.get_dates('%Y%m%d')"
+      ],
+      "execution_count": 121,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "n2vYYxvTWuNj",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 54
+        },
+        "outputId": "1a666025-c1b0-46a3-9012-58474489ae53"
+      },
+      "source": [
+        "# Read in the latest raw linelist from Dure\n",
+        "df = gbq.read_gbq(\"\"\"SELECT * FROM `doh-covid-dwh.covidkaya_20_trans.covidkaya_linelist_master`\"\"\", project_id=\"doh-covid-dwh\")\n",
+        "df = df[df.lab_result.str.upper() == \"POSITIVE\"]\n",
+        "\n",
+        "# Also read in yesterday's cleaned linelist\n",
+        "# If dure extract has columns that the eb linelist doesn't, add these in as NULLs so they match\n",
+        "eb_yday_columns = gbq.read_gbq(\"\"\"SELECT column_name FROM `doh-covid-dwh`.dohemails_20_trans.INFORMATION_SCHEMA.COLUMNS WHERE \n",
+        "table_name='linelist_for_dure' \"\"\", project_id=\"doh-covid-dwh\")\n",
+        "diff_eb_cols = set(df.columns.values) - set(eb_yday_columns.column_name)\n",
+        "\n",
+        "cols_to_add = \"\"\n",
+        "if len(diff_eb_cols) > 0:\n",
+        "    cols_to_add = \",\" + \", \".join([\"NULL AS \" + d for d in diff_eb_cols])\n",
+        "    print(\"Added empty columns {} to the eb linelist\".format(\", \".join(list(diff_eb_cols))))\n",
+        "    \n",
+        "eb_yday = gbq.read_gbq(\"\"\"SELECT * {} FROM `doh-covid-dwh.dohemails_20_trans.linelist_for_dure`\"\"\"\\\n",
+        "                       .format(cols_to_add), project_id=\"doh-covid-dwh\")\n",
+        "eb_yday = eb_yday[df.columns.values]"
+      ],
+      "execution_count": 122,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Added empty columns dateupdated, addedby, streetphilhealth, timeupdated, lastupdated, modifiedby, bdate_raw, updatedby, place_with_covid to the eb linelist\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nzAyqw7yhHKm",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# df.to_pickle('df.pkl')\n",
+        "# eb_yday.to_pickle('eb.pkl')\n",
+        "\n",
+        "# df = read_pickle('df.pkl')\n",
+        "# eb_yday = read_pickle('eb.pkl')"
+      ],
+      "execution_count": 123,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "IhgWyHbLNinq",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "fe292396-2ead-4b55-b94c-24d97842278a"
+      },
+      "source": [
+        "# # Preprocess casenumbers\n",
+        "\n",
+        "# Are there any stray \"COVID19\" strings that got left in there?\n",
+        "malformed = df[(df.casenumber.notnull()) & (df.casenumber.str.contains(\"COVID19\"))][['casenumber','caseid_covidkaya']]\n",
+        "if malformed.shape[0] > 0:\n",
+        "  warnings.warn(f\"There are {malformed.shape[0]} malformed casenumbers.\")\n",
+        "else:\n",
+        "  print(\"No floopy 20COVID19 today.\")\n",
+        "\n",
+        "# # Remove the alphabet\n",
+        "# casenum_mask = (df.casenumber.notnull()) & (~df.casenumber.fillna('').str.contains(\"20COVID19\"))\n",
+        "# for alpha in ['A','B','C','D','E','F','G','I','J','K','L','M','N','O','Q','R','S','T','U','V','W','X','Y','Z']:\n",
+        "#   df.loc[casenum_mask,'casenumber'] = df.loc[casenum_mask,'casenumber'].str.replace(alpha,\"\")\n",
+        "\n",
+        "# # Shave off excess digits\n",
+        "# max_num = len(str(max(eb_yday.case_num))) + 2\n",
+        "# df[\"casenumber\"] = df[\"casenumber\"].apply(lambda x: x[0:max_num] if str(x) != 'nan' \n",
+        "#                                           and x is not None and \"20COVID19\" not in x\n",
+        "#                                           and len(x) > max_num else x)"
+      ],
+      "execution_count": 124,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "No floopy 20COVID19 today.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "l5Z7iyX7iq7v",
+        "colab_type": "text"
+      },
+      "source": [
+        "# df-level checks and standardizations"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "deR2Ni-niDnG",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 52
+        },
+        "outputId": "8f9d3f24-ed99-4ef5-e857-362a9597687c"
+      },
+      "source": [
+        "# Are all important columns present\n",
+        "scripts.test_all_columns_present(df)\n",
+        "\n",
+        "# Are the date columns in the right format?\n",
+        "df = scripts.test_all_dates_right_format(df)"
+      ],
+      "execution_count": 125,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "All important columns are present.\n",
+            "Corrected the date format for bdate_raw\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "s85mnqF2WuN8",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Are any deleted cases still here?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "XHm1zXHZWuN9",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "4b3cb9f0-38b2-420a-9234-ddc2facb6345"
+      },
+      "source": [
+        "deleted = gbq.read_gbq(\"\"\"SELECT * FROM `doh-covid-dwh.covidkaya_10_source.fordeletion_latest`\"\"\")\n",
+        "\n",
+        "deleted_present = set(deleted.uic) & set(df.caseid_covidkaya)\n",
+        "if len(deleted_present) > 0: \n",
+        "    warnings.warn(f\"There are {len(deleted_present)} cases that shouldn't be here. Deleting them now.\")\n",
+        "else:\n",
+        "    print(\"None of the deleted cases are here.\")"
+      ],
+      "execution_count": 126,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "None of the deleted cases are here.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yYF_hWFgWuOE",
+        "colab_type": "text"
+      },
+      "source": [
+        "# 🎲 Add in Skipping Numbers\n",
+        "- See what case numbers are missing from the count\n",
+        "- Add them back from yesterday's linelist"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "fBa6TZDAWuOF",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 52
+        },
+        "outputId": "87c5add8-fa55-437c-cbba-a3541bdd9913"
+      },
+      "source": [
+        "### NOT APPLICABLE ANYMORE ###\n",
+        "# Obtain the total number of cases from yesterday\n",
+        "# max_casenum = eb_yday.shape[0]\n",
+        "# print(\"There should be casenumbers from 1 to {}\".format(max_casenum))\n",
+        "\n",
+        "# List down all the skip numbers\n",
+        "# skip_numbers = set([\"PH\" + str(i) for i in range(1, max_casenum+1)]) - set(df.casenumber)\n",
+        "cn_yesterday = set(eb_yday.casenumber.values)\n",
+        "skip_numbers = cn_yesterday - set(df.casenumber)\n",
+        "\n",
+        "# Remove any cases that have been deactivated\n",
+        "deleted_df = gbq.read_gbq(\"\"\"SELECT casenumber FROM `doh-covid-dwh.durecases_20_trans.deleted_casenumbers`\"\"\", project_id='doh-covid-dwh')\n",
+        "deleted = deleted_df.casenumber.values\n",
+        "skip_numbers = skip_numbers - set(deleted)\n",
+        "print(\"There are {} unfilled skip numbers\".format(len(skip_numbers)))\n",
+        "\n",
+        "# Are these all present in yesterday's linelist?\n",
+        "skip_numbers_missing = skip_numbers - set(eb_yday.casenumber)\n",
+        "if len(skip_numbers_missing) > 0:\n",
+        "    warnings.warn(\"{} of which are missing in both linelists: {}\".format(len(skip_numbers_missing), skip_numbers_missing))\n",
+        "else:\n",
+        "    print(\"All are present in the previous linelist.\")"
+      ],
+      "execution_count": 127,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "There are 2026 unfilled skip numbers\n",
+            "All are present in the previous linelist.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kr1HjiOsPc90",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "041ab243-77e7-437f-9095-b9c101173221"
+      },
+      "source": [
+        "# Create a lookup of the caseid_covidkaya:casenumber from yesterday\n",
+        "lookup = eb_yday[['caseid_covidkaya', 'casenumber' ,'firstname', 'lastname', 'middlename']] # [eb_yday.casenumber.isin(skip_numbers)]\n",
+        "lookup = lookup.dropna(subset=['caseid_covidkaya'])\n",
+        "\n",
+        "# Raise warning if caseid_covidkayas were duplicated with 2+ different casenumbers yesterday\n",
+        "dup_covidkaya = lookup[lookup.caseid_covidkaya.isin(\n",
+        "    lookup[lookup.caseid_covidkaya.duplicated()].caseid_covidkaya)]\\\n",
+        ".sort_values('caseid_covidkaya')\n",
+        "\n",
+        "lookup = lookup.drop_duplicates(subset=['caseid_covidkaya'], keep=False)\n",
+        "lookup.shape"
+      ],
+      "execution_count": 128,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(41764, 5)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 128
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "SqL2gCanWuOI",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 738
+        },
+        "outputId": "bdb09979-8e23-4d4e-ab99-5925302525dc"
+      },
+      "source": [
+        "if len(dup_covidkaya) > 0:\n",
+        "    warnings.warn(\"There are {} caseid_covidkayas that were duplicated\".format(len(dup_covidkaya)))\n",
+        "    display(dup_covidkaya)\n",
+        "    dup_covidkaya.to_csv(f'dup_covidkaya_{pht_date_yday}.csv')\n",
+        "    dup_covidkaya.to_gbq(f\"covidkaya_20_trans.dup_covidkaya_{pht_date_yday}\", project_id='doh-covid-dwh', if_exists='replace')\n",
+        "    lookup = lookup[~lookup.caseid_covidkaya.isin(dup_covidkaya.caseid_covidkaya)]\n",
+        "\n",
+        "# Fill in today's casenumbers with yesterday's\n",
+        "lookup = lookup.set_index('caseid_covidkaya')['casenumber']\n",
+        "df['casenum_yday'] = df.caseid_covidkaya.map(lookup)\n",
+        "df['casenum_yday'] = df['casenum_yday']\n",
+        "\n",
+        "print('Empty casenumber today, but casenumber was there yesterday: {:,d}'.format( \n",
+        "      sum(df.casenumber.isnull() & df.casenum_yday.notnull())))\n",
+        "print('Empty casenum yesterday, but it\\'s here today: ', \n",
+        "      sum(df.casenum_yday.isnull() & df.casenumber.notnull()))\n",
+        "\n",
+        "# Compare casenumbers and casenum_yday\n",
+        "casenum_unequal = (df.casenumber.notnull()) & (df.casenum_yday.notnull()) & (df.casenumber != df.casenum_yday)\n",
+        "if len(df[casenum_unequal]) > 0:\n",
+        "    print(\"There are {} casenumber-casenum_yday combos that don't match up. Excluding these. Here's a sample:\".format(len(df[casenum_unequal])))\n",
+        "    display(df[casenum_unequal][['casenumber','casenum_yday']].head())\n",
+        "    df.loc[casenum_unequal, 'casenum_yday'] = np.nan\n",
+        "    \n",
+        "# Fill in some more casenumbers based on a strict combination of PIIs\n",
+        "pii_cols = ['lastname','firstname','middlename','sex','bdate']\n",
+        "pii_df = pd.DataFrame(zip(eb_yday.casenumber, eb_yday[pii_cols].apply(tuple, axis=1)))\n",
+        "pii_df.columns = ['casenumber', 'tuples']\n",
+        "pii_df.drop_duplicates('tuples', inplace=True, keep=False)\n",
+        "pii_df = pii_df.set_index('tuples')['casenumber']\n",
+        "pii_mask = (df.casenumber.isnull()) & (df[pii_cols].apply(tuple, axis=1).isin(list(pii_df.index.values)))\n",
+        "\n",
+        "# How many are going to be filled in?\n",
+        "print(\"Started with {} empty casenumbers.\".format(len(skip_numbers)))\n",
+        "\n",
+        "# Fill in the casenumbers\n",
+        "df['casenumber'] = df.casenumber.fillna(df.casenum_yday)\n",
+        "df.loc[pii_mask, 'casenumber'] = df.loc[pii_mask][pii_cols].apply(tuple, axis=1).map(pii_df)\n",
+        "\n",
+        "# Recount the skip numbers\n",
+        "prev_skip_numbers = skip_numbers\n",
+        "max_casenum = eb_yday.shape[0]\n",
+        "skip_numbers = set([\"PH\" + str(i) for i in range(1, max_casenum+1)]) - set(df.casenumber) - set(deleted)\n",
+        "\n",
+        "print(\"{} of these have been filled in\".format(len(prev_skip_numbers) - len(skip_numbers)))"
+      ],
+      "execution_count": 129,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:2: UserWarning: There are 66 caseid_covidkayas that were duplicated\n",
+            "  \n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>caseid_covidkaya</th>\n",
+              "      <th>casenumber</th>\n",
+              "      <th>firstname</th>\n",
+              "      <th>lastname</th>\n",
+              "      <th>middlename</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>9653</th>\n",
+              "      <td>0C6MS7WQCN</td>\n",
+              "      <td>PH37598</td>\n",
+              "      <td>DESIREE</td>\n",
+              "      <td>GERIL</td>\n",
+              "      <td>ALMIRAÃ‘EZ</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>10119</th>\n",
+              "      <td>0C6MS7WQCN</td>\n",
+              "      <td>PH38610</td>\n",
+              "      <td>DESIREE</td>\n",
+              "      <td>GERIL</td>\n",
+              "      <td>ALMIRA√ËEZ</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9658</th>\n",
+              "      <td>2QBNTUIHRK</td>\n",
+              "      <td>PH37612</td>\n",
+              "      <td>RYAN MANUEL</td>\n",
+              "      <td>ARIÃ‘AS</td>\n",
+              "      <td>None</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9797</th>\n",
+              "      <td>2QBNTUIHRK</td>\n",
+              "      <td>PH38248</td>\n",
+              "      <td>RYAN MANUEL</td>\n",
+              "      <td>ARI√ËAS</td>\n",
+              "      <td>None</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9995</th>\n",
+              "      <td>35R5VMQMF2</td>\n",
+              "      <td>PH38475</td>\n",
+              "      <td>RONNIE</td>\n",
+              "      <td>BASGUI√ËA</td>\n",
+              "      <td>P</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>...</th>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>17878</th>\n",
+              "      <td>YKNEEVU4FU</td>\n",
+              "      <td>PH37602</td>\n",
+              "      <td>MAC KENNETH</td>\n",
+              "      <td>MUÃ‘OZ</td>\n",
+              "      <td>MIRANDA</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>18784</th>\n",
+              "      <td>ZL9W47BYMF</td>\n",
+              "      <td>PH37560</td>\n",
+              "      <td>CIRILO</td>\n",
+              "      <td>VALDEPEÃ‘AS</td>\n",
+              "      <td>None</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9792</th>\n",
+              "      <td>ZL9W47BYMF</td>\n",
+              "      <td>PH38145</td>\n",
+              "      <td>CIRILO</td>\n",
+              "      <td>VALDEPE√ËAS</td>\n",
+              "      <td>None</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>37544</th>\n",
+              "      <td>ZU5JQB41J5</td>\n",
+              "      <td>PH37609</td>\n",
+              "      <td>ESTER</td>\n",
+              "      <td>CASTAÃ‘EDA</td>\n",
+              "      <td>ALFONSO</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>37551</th>\n",
+              "      <td>ZU5JQB41J5</td>\n",
+              "      <td>PH38228</td>\n",
+              "      <td>ESTER</td>\n",
+              "      <td>CASTA√±EDA</td>\n",
+              "      <td>ALFONSO</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "<p>66 rows × 5 columns</p>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "      caseid_covidkaya casenumber    firstname     lastname  middlename\n",
+              "9653        0C6MS7WQCN    PH37598      DESIREE        GERIL  ALMIRAÃ‘EZ\n",
+              "10119       0C6MS7WQCN    PH38610      DESIREE        GERIL  ALMIRA√ËEZ\n",
+              "9658        2QBNTUIHRK    PH37612  RYAN MANUEL      ARIÃ‘AS        None\n",
+              "9797        2QBNTUIHRK    PH38248  RYAN MANUEL      ARI√ËAS        None\n",
+              "9995        35R5VMQMF2    PH38475       RONNIE    BASGUI√ËA           P\n",
+              "...                ...        ...          ...          ...         ...\n",
+              "17878       YKNEEVU4FU    PH37602  MAC KENNETH       MUÃ‘OZ     MIRANDA\n",
+              "18784       ZL9W47BYMF    PH37560       CIRILO  VALDEPEÃ‘AS        None\n",
+              "9792        ZL9W47BYMF    PH38145       CIRILO  VALDEPE√ËAS        None\n",
+              "37544       ZU5JQB41J5    PH37609        ESTER   CASTAÃ‘EDA     ALFONSO\n",
+              "37551       ZU5JQB41J5    PH38228        ESTER   CASTA√±EDA     ALFONSO\n",
+              "\n",
+              "[66 rows x 5 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n",
+            "1it [00:03,  3.65s/it]\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "Empty casenumber today, but casenumber was there yesterday: 1,973\n",
+            "Empty casenum yesterday, but it's here today:  32\n",
+            "There are 28 casenumber-casenum_yday combos that don't match up. Excluding these. Here's a sample:\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>casenumber</th>\n",
+              "      <th>casenum_yday</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>193</th>\n",
+              "      <td>PH30491</td>\n",
+              "      <td>PH30492</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2843</th>\n",
+              "      <td>PH36233</td>\n",
+              "      <td>PH36232</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3124</th>\n",
+              "      <td>PHK03</td>\n",
+              "      <td>PH38873</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3644</th>\n",
+              "      <td>PH39328</td>\n",
+              "      <td>PH39327</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8477</th>\n",
+              "      <td>PH27894P</td>\n",
+              "      <td>PH27894</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "     casenumber casenum_yday\n",
+              "193     PH30491      PH30492\n",
+              "2843    PH36233      PH36232\n",
+              "3124      PHK03      PH38873\n",
+              "3644    PH39328      PH39327\n",
+              "8477   PH27894P      PH27894"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "Started with 2026 empty casenumbers.\n",
+            "1958 of these have been filled in\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "LdN61A7IWuOM",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 228
+        },
+        "outputId": "5b54b9e4-3569-443f-c273-c0d8c8522827"
+      },
+      "source": [
+        "# For those that are still missing, append them from yesterday's linelist\n",
+        "df.loc[:, 'skip_number'] = False\n",
+        "eb_yday_sub = eb_yday[eb_yday.casenumber.isin(skip_numbers)]\n",
+        "eb_yday_sub.loc[:, 'skip_number'] = True\n",
+        "\n",
+        "df = pd.concat([df, eb_yday_sub])"
+      ],
+      "execution_count": 130,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py:845: SettingWithCopyWarning: \n",
+            "A value is trying to be set on a copy of a slice from a DataFrame.\n",
+            "Try using .loc[row_indexer,col_indexer] = value instead\n",
+            "\n",
+            "See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n",
+            "  self.obj[key] = _infer_fill_value(value)\n",
+            "/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py:966: SettingWithCopyWarning: \n",
+            "A value is trying to be set on a copy of a slice from a DataFrame.\n",
+            "Try using .loc[row_indexer,col_indexer] = value instead\n",
+            "\n",
+            "See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n",
+            "  self.obj[item] = s\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "M1eFxz8GWuOP",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 52
+        },
+        "outputId": "586d78e9-9fc4-4ded-dfcc-0c60c8e8f891"
+      },
+      "source": [
+        "# Check again that there aren't any skip numbers\n",
+        "max_casenum = eb_yday.shape[0]\n",
+        "new_skip_numbers = set([\"PH\" + str(i) for i in range(1, max_casenum+1)]) - set(df.casenumber) - set(deleted)\n",
+        "# \n",
+        "if len(new_skip_numbers) == 0:\n",
+        "    print(\"Yep, there really aren't any skip numbers left.\")\n",
+        "else:\n",
+        "    warnings.warn('The following are still missing: {}'.format(new_skip_numbers))\n",
+        "\n",
+        "print('We now have {} records in the dure extract.'.format(len(df)))"
+      ],
+      "execution_count": 131,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Yep, there really aren't any skip numbers left.\n",
+            "We now have 47280 records in the dure extract.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "uS3dzGpwkGtj",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 630
+        },
+        "outputId": "db62e051-4791-4ff7-ade9-5efd424b1c93"
+      },
+      "source": [
+        "# Check: Are any of the casenumbers mapped to different UIC sbetwee n\n",
+        "eb_yday_test = eb_yday[['casenumber','caseid_covidkaya']].rename(columns={'casenumber':'casenumber_yday'}).set_index('caseid_covidkaya')\n",
+        "uic_check = df[df.casenumber.notnull()][['casenumber','caseid_covidkaya']].join(eb_yday_test, on='caseid_covidkaya')\n",
+        "uic_wrong = uic_check[(uic_check.casenumber_yday.notnull()) & (uic_check.casenumber != uic_check.casenumber_yday)]\n",
+        "warnings.warn(f\"There are {uic_wrong.caseid_covidkaya}\")\n",
+        "display(uic_wrong.sort_values('caseid_covidkaya'))"
+      ],
+      "execution_count": 132,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:5: UserWarning: There are 193      ZIUGROZDDE\n",
+            "2843     0HNIAGK0HP\n",
+            "3124     WBOTAFOQ3B\n",
+            "3644     U1CXNAK6PJ\n",
+            "8477     T71HX0YKKZ\n",
+            "            ...    \n",
+            "30815    EHCLLI9MCR\n",
+            "30816    EHCLLI9MCR\n",
+            "37551    ZU5JQB41J5\n",
+            "38459    WCMIN3YHRQ\n",
+            "38460    WCMIN3YHRQ\n",
+            "Name: caseid_covidkaya, Length: 94, dtype: object\n",
+            "  \"\"\"\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>casenumber</th>\n",
+              "      <th>caseid_covidkaya</th>\n",
+              "      <th>casenumber_yday</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>40797</th>\n",
+              "      <td>PH37598</td>\n",
+              "      <td>0C6MS7WQCN</td>\n",
+              "      <td>PH38610</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>10119</th>\n",
+              "      <td>PH38610</td>\n",
+              "      <td>0C6MS7WQCN</td>\n",
+              "      <td>PH37598</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2843</th>\n",
+              "      <td>PH36233</td>\n",
+              "      <td>0HNIAGK0HP</td>\n",
+              "      <td>PH36232</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>42732</th>\n",
+              "      <td>PH37612</td>\n",
+              "      <td>2QBNTUIHRK</td>\n",
+              "      <td>PH38248</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9797</th>\n",
+              "      <td>PH38248</td>\n",
+              "      <td>2QBNTUIHRK</td>\n",
+              "      <td>PH37612</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>...</th>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9792</th>\n",
+              "      <td>PH38145</td>\n",
+              "      <td>ZL9W47BYMF</td>\n",
+              "      <td>PH37560</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>44876</th>\n",
+              "      <td>PH37560</td>\n",
+              "      <td>ZL9W47BYMF</td>\n",
+              "      <td>PH38145</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>35780</th>\n",
+              "      <td>ZQC70IJZ</td>\n",
+              "      <td>ZQC70IJZ</td>\n",
+              "      <td>PH32798</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>39246</th>\n",
+              "      <td>PH37609</td>\n",
+              "      <td>ZU5JQB41J5</td>\n",
+              "      <td>PH38228</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>37551</th>\n",
+              "      <td>PH38228</td>\n",
+              "      <td>ZU5JQB41J5</td>\n",
+              "      <td>PH37609</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "<p>94 rows × 3 columns</p>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "      casenumber caseid_covidkaya casenumber_yday\n",
+              "40797    PH37598       0C6MS7WQCN         PH38610\n",
+              "10119    PH38610       0C6MS7WQCN         PH37598\n",
+              "2843     PH36233       0HNIAGK0HP         PH36232\n",
+              "42732    PH37612       2QBNTUIHRK         PH38248\n",
+              "9797     PH38248       2QBNTUIHRK         PH37612\n",
+              "...          ...              ...             ...\n",
+              "9792     PH38145       ZL9W47BYMF         PH37560\n",
+              "44876    PH37560       ZL9W47BYMF         PH38145\n",
+              "35780   ZQC70IJZ         ZQC70IJZ         PH32798\n",
+              "39246    PH37609       ZU5JQB41J5         PH38228\n",
+              "37551    PH38228       ZU5JQB41J5         PH37609\n",
+              "\n",
+              "[94 rows x 3 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "UEyoQ4PdWuOS",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Count missing columns per record\n",
+        "\n",
+        "To help with deduplication later on."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oUYHV5yoWuOU",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "num_cols = len(df.columns.values)\n",
+        "df['missing_columns'] = df.replace(0, np.nan).replace('', np.nan).apply(lambda x: num_cols - x.count(), axis=1)"
+      ],
+      "execution_count": 133,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "MC57JTFPWuOa",
+        "colab_type": "text"
+      },
+      "source": [
+        "# 📛 Check Names per Casenumber\n",
+        "\n",
+        "Do the names from yesterday match up for the same case numbers?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "s8AwBESpWuOb",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 1000,
+          "referenced_widgets": [
+            "7ffc74114e0c4dfba713ad034ef2207e",
+            "a52d2a462e1e4d1abad0e5c9892480a0",
+            "27dfe0dcb182497c926a0b614be6f412",
+            "6bfa8edab55540cd89fd612774b9c129",
+            "885fc403bb18483482f365ac8e53fde7",
+            "0a6758a2fe3245a08ca3f4546a7ede11",
+            "8ec733ede3c64f098714256239474038",
+            "28991d642b5549d4854cdf01e1464012"
+          ]
+        },
+        "outputId": "ade04282-c1a6-43cd-bd42-a52d4e88c749"
+      },
+      "source": [
+        "# Get the names for the cases in today's dure extract\n",
+        "today = df[['casenumber','lastname','firstname','middlename']]\n",
+        "today = today[today.casenumber.notnull()]\n",
+        "today['name'] = today.apply(lambda x: \" \".join([n for n in [x.lastname, x.firstname, x.middlename] if str(n) != 'nan' and n is not None]), axis=1)\n",
+        "\n",
+        "# Get the names for the cases in yesterday's extract, in the same format\n",
+        "yest = eb_yday[['casenumber','lastname','firstname','middlename']]\n",
+        "yest = yest[yest.casenumber.notnull()]\n",
+        "yest['name_yesterday'] = yest.apply(lambda x: \" \".join([n for n in [x.lastname, x.firstname, x.middlename] if str(n) != 'nan' and n is not None]), axis=1)\n",
+        "yest.rename(columns={'lastname':'lastname_yesterday','firstname':'firstname_yesterday','middlename':'middlename_yesterday'}, inplace=True)\n",
+        "\n",
+        "# Join today's and yesterday's based on case number (these should be the \"same\" person)\n",
+        "join = today.join(yest.set_index('casenumber'), on='casenumber')\n",
+        "join = join[join.casenumber != \"0\"]\n",
+        "join = join[['casenumber','lastname','lastname_yesterday', 'firstname','firstname_yesterday','name','name_yesterday']]\n",
+        "\n",
+        "# Compute text similarity score \n",
+        "join['name_sim'] = join.swifter.apply(lambda x: fuzz.token_sort_ratio(x['name'], x['name_yesterday']) if str(x.name) != \"nan\" and str(x.name_yesterday) != \"nan\" else np.nan, axis=1)\n",
+        "\n",
+        "# Flag all the case numbers with low similarity \n",
+        "join_issues = join[join.name_sim < 60].drop_duplicates()\n",
+        "display(join_issues)\n",
+        "\n",
+        "# Output this table to .csv and to BQ\n",
+        "join_issues.to_csv(f'names_changed_{pht_date_tom}.csv')\n",
+        "join_issues.to_gbq(\"covidkaya_20_trans.names_changed_\" + pht_date_tom, project_id='doh-covid-dwh', if_exists='replace')"
+      ],
+      "execution_count": 134,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/swifter/swifter.py:55: UserWarning: This pandas object has duplicate indices, and swifter may not be able to improve performance. Consider resetting the indices with `df.reset_index(drop=True)`.\n",
+            "  \"This pandas object has duplicate indices, and swifter may not be able to improve performance. Consider resetting the indices with `df.reset_index(drop=True)`.\"\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "7ffc74114e0c4dfba713ad034ef2207e",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, description='Pandas Apply', max=42201.0, style=ProgressStyle(descripti…"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>casenumber</th>\n",
+              "      <th>lastname</th>\n",
+              "      <th>lastname_yesterday</th>\n",
+              "      <th>firstname</th>\n",
+              "      <th>firstname_yesterday</th>\n",
+              "      <th>name</th>\n",
+              "      <th>name_yesterday</th>\n",
+              "      <th>name_sim</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>193</th>\n",
+              "      <td>PH30491</td>\n",
+              "      <td>OCTAVIANO</td>\n",
+              "      <td>NUNEZ</td>\n",
+              "      <td>WILLIAM</td>\n",
+              "      <td>REVFREEDE JOHN</td>\n",
+              "      <td>OCTAVIANO WILLIAM</td>\n",
+              "      <td>NUNEZ REVFREEDE JOHN BONILLA</td>\n",
+              "      <td>27.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2843</th>\n",
+              "      <td>PH36233</td>\n",
+              "      <td>ESCATRON</td>\n",
+              "      <td>ARCEGA</td>\n",
+              "      <td>ANNA LIZA</td>\n",
+              "      <td>REA BELLE</td>\n",
+              "      <td>ESCATRON ANNA LIZA ANDRADA</td>\n",
+              "      <td>ARCEGA REA BELLE ESCATRON</td>\n",
+              "      <td>59.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3644</th>\n",
+              "      <td>PH39328</td>\n",
+              "      <td>NILO</td>\n",
+              "      <td>DIEGO</td>\n",
+              "      <td>EVANGELINE</td>\n",
+              "      <td>NORMAN RAFAEL</td>\n",
+              "      <td>NILO EVANGELINE</td>\n",
+              "      <td>DIEGO NORMAN RAFAEL CHUA</td>\n",
+              "      <td>26.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>39727</th>\n",
+              "      <td>PH35832</td>\n",
+              "      <td>MENDOZA</td>\n",
+              "      <td>LANCE</td>\n",
+              "      <td>SHIRLEY</td>\n",
+              "      <td>JOSHUA</td>\n",
+              "      <td>MENDOZA SHIRLEY M.</td>\n",
+              "      <td>LANCE JOSHUA DINGLE</td>\n",
+              "      <td>33.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>39821</th>\n",
+              "      <td>PH36230</td>\n",
+              "      <td>CAMPOSA</td>\n",
+              "      <td>SANTOS</td>\n",
+              "      <td>RALPH</td>\n",
+              "      <td>ABIGAIL</td>\n",
+              "      <td>CAMPOSA RALPH</td>\n",
+              "      <td>SANTOS ABIGAIL HERNANDEZ</td>\n",
+              "      <td>16.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>39829</th>\n",
+              "      <td>PH36286</td>\n",
+              "      <td>PISALBON</td>\n",
+              "      <td>TEOLOGIA</td>\n",
+              "      <td>CARLO</td>\n",
+              "      <td>WINCHELL ROSE</td>\n",
+              "      <td>PISALBON CARLO INSIGNE</td>\n",
+              "      <td>TEOLOGIA WINCHELL ROSE UNLAYAO</td>\n",
+              "      <td>31.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40450</th>\n",
+              "      <td>PH36616</td>\n",
+              "      <td>MACASERO</td>\n",
+              "      <td>BARRERA</td>\n",
+              "      <td>NATIVIDAD</td>\n",
+              "      <td>SARAH</td>\n",
+              "      <td>MACASERO NATIVIDAD</td>\n",
+              "      <td>BARRERA SARAH DINGWASEN</td>\n",
+              "      <td>29.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40646</th>\n",
+              "      <td>PH38106</td>\n",
+              "      <td>RODRIGUEZ</td>\n",
+              "      <td>CABRERA</td>\n",
+              "      <td>GIZELLE</td>\n",
+              "      <td>LESTER</td>\n",
+              "      <td>RODRIGUEZ GIZELLE DIORES</td>\n",
+              "      <td>CABRERA LESTER</td>\n",
+              "      <td>32.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40888</th>\n",
+              "      <td>PH38529</td>\n",
+              "      <td>SARAIL</td>\n",
+              "      <td>APOLINAR</td>\n",
+              "      <td>MICHAELSON</td>\n",
+              "      <td>KHIEL ANTHONY</td>\n",
+              "      <td>SARAIL MICHAELSON SABBI</td>\n",
+              "      <td>APOLINAR KHIEL ANTHONY ROMO</td>\n",
+              "      <td>20.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40996</th>\n",
+              "      <td>PH39140</td>\n",
+              "      <td>BARTOLAY</td>\n",
+              "      <td>FATALLAR</td>\n",
+              "      <td>VIRGINIA</td>\n",
+              "      <td>LARA JEAN</td>\n",
+              "      <td>BARTOLAY VIRGINIA P</td>\n",
+              "      <td>FATALLAR LARA JEAN M</td>\n",
+              "      <td>26.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>41166</th>\n",
+              "      <td>PH39327</td>\n",
+              "      <td>DIEGO</td>\n",
+              "      <td>NILO</td>\n",
+              "      <td>NORMAN RAFAEL</td>\n",
+              "      <td>EVANGELINE</td>\n",
+              "      <td>DIEGO NORMAN RAFAEL CHUA</td>\n",
+              "      <td>NILO EVANGELINE</td>\n",
+              "      <td>31.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>41172</th>\n",
+              "      <td>PH39334</td>\n",
+              "      <td>MARTONIA</td>\n",
+              "      <td>DURANGPANG</td>\n",
+              "      <td>JUDELLINE</td>\n",
+              "      <td>REY</td>\n",
+              "      <td>MARTONIA JUDELLINE GONZAGA</td>\n",
+              "      <td>DURANGPANG REY IRAN</td>\n",
+              "      <td>22.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>42444</th>\n",
+              "      <td>PH38230</td>\n",
+              "      <td>AVILA</td>\n",
+              "      <td>FAVILA</td>\n",
+              "      <td>VIVIAN</td>\n",
+              "      <td>MARGOT JANE</td>\n",
+              "      <td>AVILA VIVIAN M</td>\n",
+              "      <td>FAVILA MARGOT JANE SORIANO</td>\n",
+              "      <td>55.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>42893</th>\n",
+              "      <td>PH38010</td>\n",
+              "      <td>CABRERA</td>\n",
+              "      <td>RODRIGUEZ</td>\n",
+              "      <td>LESTER</td>\n",
+              "      <td>GIZELLE</td>\n",
+              "      <td>CABRERA LESTER</td>\n",
+              "      <td>RODRIGUEZ GIZELLE DIORES</td>\n",
+              "      <td>32.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>44011</th>\n",
+              "      <td>PH38131</td>\n",
+              "      <td>APOLINAR</td>\n",
+              "      <td>SARAIL</td>\n",
+              "      <td>KHIEL ANTHONY</td>\n",
+              "      <td>MICHAELSON</td>\n",
+              "      <td>APOLINAR KHIEL ANTHONY ROMO</td>\n",
+              "      <td>SARAIL MICHAELSON SABBI</td>\n",
+              "      <td>40.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>44601</th>\n",
+              "      <td>PH12609</td>\n",
+              "      <td>ADJARAIL</td>\n",
+              "      <td>HADJARAIL</td>\n",
+              "      <td>EDGAR</td>\n",
+              "      <td>EDGAR</td>\n",
+              "      <td>ADJARAIL EDGAR APLASIN</td>\n",
+              "      <td>HADJARAIL EDGAR APLASIN</td>\n",
+              "      <td>58.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>45253</th>\n",
+              "      <td>PH20821</td>\n",
+              "      <td>YUJUICO-HIRANO</td>\n",
+              "      <td>ENGUERRA</td>\n",
+              "      <td>SHIELA MARIE</td>\n",
+              "      <td>JANICE</td>\n",
+              "      <td>YUJUICO-HIRANO SHIELA MARIE LOO</td>\n",
+              "      <td>ENGUERRA JANICE OLANDAG</td>\n",
+              "      <td>30.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>45699</th>\n",
+              "      <td>PH40993</td>\n",
+              "      <td>BACNIS</td>\n",
+              "      <td>BACATAN</td>\n",
+              "      <td>ROLANDO</td>\n",
+              "      <td>TEODORA</td>\n",
+              "      <td>BACNIS ROLANDO SALVADOR</td>\n",
+              "      <td>BACATAN TEODORA BATILLER</td>\n",
+              "      <td>38.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>46130</th>\n",
+              "      <td>PH39335</td>\n",
+              "      <td>DURANGPANG</td>\n",
+              "      <td>MARTONIA</td>\n",
+              "      <td>REY</td>\n",
+              "      <td>JUDELLINE</td>\n",
+              "      <td>DURANGPANG REY IRAN</td>\n",
+              "      <td>MARTONIA JUDELLINE GONZAGA</td>\n",
+              "      <td>13.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "      casenumber        lastname  ...                  name_yesterday name_sim\n",
+              "193      PH30491       OCTAVIANO  ...    NUNEZ REVFREEDE JOHN BONILLA     27.0\n",
+              "2843     PH36233        ESCATRON  ...       ARCEGA REA BELLE ESCATRON     59.0\n",
+              "3644     PH39328            NILO  ...        DIEGO NORMAN RAFAEL CHUA     26.0\n",
+              "39727    PH35832         MENDOZA  ...             LANCE JOSHUA DINGLE     33.0\n",
+              "39821    PH36230         CAMPOSA  ...        SANTOS ABIGAIL HERNANDEZ     16.0\n",
+              "39829    PH36286        PISALBON  ...  TEOLOGIA WINCHELL ROSE UNLAYAO     31.0\n",
+              "40450    PH36616        MACASERO  ...         BARRERA SARAH DINGWASEN     29.0\n",
+              "40646    PH38106       RODRIGUEZ  ...                  CABRERA LESTER     32.0\n",
+              "40888    PH38529          SARAIL  ...     APOLINAR KHIEL ANTHONY ROMO     20.0\n",
+              "40996    PH39140        BARTOLAY  ...            FATALLAR LARA JEAN M     26.0\n",
+              "41166    PH39327           DIEGO  ...                 NILO EVANGELINE     31.0\n",
+              "41172    PH39334        MARTONIA  ...             DURANGPANG REY IRAN     22.0\n",
+              "42444    PH38230           AVILA  ...      FAVILA MARGOT JANE SORIANO     55.0\n",
+              "42893    PH38010         CABRERA  ...        RODRIGUEZ GIZELLE DIORES     32.0\n",
+              "44011    PH38131        APOLINAR  ...         SARAIL MICHAELSON SABBI     40.0\n",
+              "44601    PH12609        ADJARAIL  ...         HADJARAIL EDGAR APLASIN     58.0\n",
+              "45253    PH20821  YUJUICO-HIRANO  ...         ENGUERRA JANICE OLANDAG     30.0\n",
+              "45699    PH40993          BACNIS  ...        BACATAN TEODORA BATILLER     38.0\n",
+              "46130    PH39335      DURANGPANG  ...      MARTONIA JUDELLINE GONZAGA     13.0\n",
+              "\n",
+              "[19 rows x 8 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n",
+            "1it [00:06,  6.49s/it]\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "pkGSpgsgWuOe",
+        "colab_type": "text"
+      },
+      "source": [
+        "# 👭 Identify Duplicates"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dTAbtINzWuOe",
+        "colab_type": "text"
+      },
+      "source": [
+        "A set of records may be considered as duplicates of each other if they meet at least any one of the ff. criteria:\n",
+        "1. They have the same **casenumber**.\n",
+        "2. They have the same **caseid_covidkaya**.\n",
+        "3. They match in any of multiple combinations of columns."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3aWsj7AAZmwE",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Preparations for deduplication"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_WwCdMW8NBIY",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import re, string"
+      ],
+      "execution_count": 135,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "E7nUqSaDWuOf",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 122,
+          "referenced_widgets": [
+            "98e79b53c3bc49f48d794e97903e7868",
+            "348b5f38354d466fa234104fd02c166d",
+            "b9911ec92d2a43548acf3a532ad10490",
+            "ba1449fd3e604a718b43d40663025653",
+            "d61855620e9f45c1ab320377396c3448",
+            "907b93d2e3f04802bac4682ffcf7fd62",
+            "ee0e6c1f6ed845c6aaec3ea5f9c48990",
+            "7577a7e0558a49a4bda0407b6e7df5e4"
+          ]
+        },
+        "outputId": "51375ab0-b249-434e-a428-b6230e79a7fc"
+      },
+      "source": [
+        "# Convert Nones to np.nan to make any comparisons easier\n",
+        "for col in df.columns.values:\n",
+        "    df.loc[(df[col].isnull()) | (df[col] == \"\"), col] = np.nan\n",
+        "\n",
+        "# Reformat phone numbers\n",
+        "phone_cols = ['currenthome_num','workcellphonenocurrent','permanenthome_num','mobile_num']\n",
+        "df[phone_cols] = df[phone_cols].replace('0',np.nan).replace('63',np.nan) #.replace('6.39205E+11', np.nan)\n",
+        "\n",
+        "# Prepare names and initials\n",
+        "df['firstname_initials'] = df['firstname'].fillna(' ').str[0]\n",
+        "df['lastname_initials'] =df['lastname'].fillna(' ').str[0]\n",
+        "df['initials'] = df.apply(lambda x: \"\".join(sorted(\n",
+        "    [x.firstname_initials, x.lastname_initials])), axis=1)\n",
+        "\n",
+        "df['middleinitial'] = df['middlename'].fillna(' ').str[0].replace(' ', np.nan)\n",
+        "\n",
+        "# Remove punctuation from lastname and firstname\n",
+        "df['lastname'] = df['lastname'].fillna('').map(lambda x: re.sub(r'[^\\w\\s]+','', x))\n",
+        "df['firstname'] = df['firstname'].fillna('').map(lambda x: re.sub(r'[^\\w\\s]+','', x))\n",
+        "\n",
+        "# Combine the longest word from both lastname and firstname into one string, with the words sorted\n",
+        "df['max_firstname'] = df.firstname.apply(lambda x: max(x.split(),key=len) if str(x) != 'nan' else \"\")\n",
+        "# df['name_full'] = df.swifter.apply(lambda x: \" \".join(\n",
+        "#     sorted(set([max(n.split(),key=len).replace(\"Ñ\",\"N\").strip() for n in [x.lastname, x.firstname] if str(n) != \"nan\"]))), axis=1)\n",
+        "df['name_full'] = df.apply(lambda x: \" \".join(sorted([x.max_firstname, x.lastname])), axis=1)\n",
+        "\n",
+        "# Combine lastname and firstname as is, sort, then remove vowels\n",
+        "table = str.maketrans(dict.fromkeys('AEIOU'))\n",
+        "df['name_full_consonants'] = df.swifter.apply(lambda x: \" \".join(\n",
+        "    sorted(set([n.replace(\"Ñ\",\"N\").strip() for n in [x.lastname, x.firstname] if str(n) != \"nan\"]))), axis=1)\n",
+        "df['name_full_consonants'] = df['name_full_consonants'].str.translate(table)"
+      ],
+      "execution_count": 136,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/swifter/swifter.py:55: UserWarning: This pandas object has duplicate indices, and swifter may not be able to improve performance. Consider resetting the indices with `df.reset_index(drop=True)`.\n",
+            "  \"This pandas object has duplicate indices, and swifter may not be able to improve performance. Consider resetting the indices with `df.reset_index(drop=True)`.\"\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "98e79b53c3bc49f48d794e97903e7868",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, description='Pandas Apply', max=47280.0, style=ProgressStyle(descripti…"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7LEOm1BpWuOi",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Make adjusted ages\n",
+        "df['age_adj1'] = df['age']\n",
+        "df['age_adj2'] = df['age']\n",
+        "\n",
+        "df.loc[df.casenumber.notnull(), 'age_adj1'] += 1\n",
+        "df.loc[df.casenumber.isnull(), 'age_adj2'] += 1"
+      ],
+      "execution_count": 137,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lAfJJgxxHaVA",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Mark casenumbers above 35000\n",
+        "df['casenum_above_35000'] = df.case_num > 35000"
+      ],
+      "execution_count": 138,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "JR2xNK10ZuGv",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Strict and general deduplication"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DBlKn3PiWuOl",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Create a new column for each combination of columns to indicate of observations may be matched based on these\n",
+        "def get_dupe(df, dupe_columns, new_col):\n",
+        "    \"\"\" Tags records in df as duplicates\n",
+        "    in a new column named dupe_<new_col>,\n",
+        "    based on a list of columns (dupe_columns)\n",
+        "    \"\"\"\n",
+        "    \n",
+        "    col = 'dupe_' + new_col\n",
+        "    df[col] = df.groupby(dupe_columns).ngroup().add(1)\n",
+        "    \n",
+        "    freq = df[col].value_counts()\n",
+        "    not_dupe = freq[freq==1]\n",
+        "    \n",
+        "    df.loc[df[col].isin(not_dupe.index), col] = 0\n",
+        "    return df\n",
+        "\n",
+        "def more_than_one_valid(values):\n",
+        "    values = set(values) - set(['', 0, np.nan])\n",
+        "    return len(values)>1\n",
+        "\n",
+        "def remove_if_fails_checks_exact(row, dup_col):\n",
+        "    \"\"\" \n",
+        "    Remove the dupe_group for exact duplicates\n",
+        "\n",
+        "    (NOT YET SURE IF THIS WORKS)\n",
+        "    \"\"\"\n",
+        "\n",
+        "    ages = sorted(row.age)\n",
+        "    age_diff = np.diff(ages).max()\n",
+        "    suffix = row.suffix.str.lower()\n",
+        "    suffix = suffix.fillna('').map(lambda x: re.sub('[^a-z]', '', x))\n",
+        "    middlename = row.middlename.fillna('').str.lower()\n",
+        "    middlename = middlename.map(lambda x: re.sub('[^a-z]', '', x))\n",
+        "    middlename = [i for i in middlename if len(i)>1] # keep if more than a single letter\n",
+        "    low_casenum = [i for i in df.case_num if i < 35000]\n",
+        "\n",
+        "\n",
+        "    bad = [\n",
+        "        more_than_one_valid(row.casenumber),\n",
+        "        more_than_one_valid(suffix),\n",
+        "        more_than_one_valid(row.initials),\n",
+        "        more_than_one_valid(middlename),\n",
+        "        age_diff > 1,\n",
+        "        len(low_casenum)==0,\n",
+        "    ]\n",
+        "    # bad = (\n",
+        "    #     # Not more than one casenumber\n",
+        "    #     row.casenumber.fillna(' ')\\\n",
+        "    #     .map(lambda x: x[0] if x != \"\" else \"\")\\\n",
+        "    #     .replace(' ', np.nan).nunique() > 1\n",
+        "        \n",
+        "    #     # First names and middleinitials must be unique \n",
+        "    #     or (row.firstname.fillna(' ').map(lambda x: x[0] if x != \"\" else \"\").replace(' ', np.nan).nunique() > 1\n",
+        "    #     or row.middleinitial.fillna(' ').map(lambda x: x[0] if x != \"\" else \"\").replace(' ', np.nan).nunique() > 1)\n",
+        "    \n",
+        "    #     # Ages must not be more than a year apart\n",
+        "    #     or (row.age.nunique() >= 2 and np.mean([abs(age1 - age2) for i, age1 \\\n",
+        "    #                          in enumerate(row.age) for j, age2 in enumerate(row.age) if i != j]) > 2)\n",
+        "        \n",
+        "    #     # Birthdays must not be more than a year apart\n",
+        "    #     or (row.bdate.nunique() >= 2 and np.mean(list(set([abs((pd.to_datetime(bdate1) - pd.to_datetime(bdate2)).days/365) for i, bdate1 \\\n",
+        "    #                          in enumerate(row.bdate) for j, bdate2 in enumerate(row.bdate) if i != j]))) > 1) \n",
+        "    # )\n",
+        "    \n",
+        "    if any(bad):\n",
+        "        return 0\n",
+        "    return row[dup_col].unique()[0]\n",
+        "\n",
+        "\n",
+        "def remove_if_fails_checks_fuzzy(row, dup_col='general_duplicates'):\n",
+        "    \"\"\" \n",
+        "    Remove the dupe_group for fuzzier matches\n",
+        "    \"\"\"\n",
+        "\n",
+        "    bad_fuzzy = (\n",
+        "        # Middlenames are sufficiently long and don't match\n",
+        "        len(set([mid for mid in row.middlename.fillna('')\\\n",
+        "                 .map(lambda x: x[0] if x != '' else '')\\\n",
+        "                 .replace(' ', np.nan) if str(mid) != 'nan' and len(mid) >=2])) >= 2\n",
+        "        \n",
+        "        # More than one suffix\n",
+        "        or len(set(row.suffix.str.lower())) > 1\n",
+        "        # fillna('')\\\n",
+        "        # .map(lambda x: x[0] if x != '' else '')\\\n",
+        "        # .replace('', np.nan)\\\n",
+        "        # .nunique() > 1\n",
+        "\n",
+        "        # More than one non-NCR region\n",
+        "        or len(set([reg for reg in row.currentregion.fillna(' ').map(lambda x: x[0] if x != \"\" else \"\").replace(' ', np.nan).unique() if reg != \"13\"])) >= 2\n",
+        "    \n",
+        "    )\n",
+        "    \n",
+        "    if bad_fuzzy:\n",
+        "        return 0\n",
+        "    return row[dup_col].unique()[0]\n",
+        "\n",
+        "# Old version of the duplicates\n",
+        "# dupe_combos = {'casenumber': ['casenumber'],\n",
+        "#                'covidkaya': ['caseid_covidkaya'],\n",
+        "#                'name_bdate': ['name_full', 'bdate'],\n",
+        "#                'name_age': ['name_full', 'age', 'sex'],\n",
+        "#                'name_lab': ['name_full', 'confirminglab', 'sex'],\n",
+        "#                'name_dru': ['name_full', 'dru', 'sex'],\n",
+        "#                'bdate_lab': ['bdate', 'confirminglab', 'dru', 'firstname'],\n",
+        "#                'bdate_lab2': ['bdate', 'confirminglab', 'dru', 'initials', 'sex']}\n",
+        "\n",
+        "dupe_combos = {'casenumber': ['casenumber', 'casenum_above_35000'],\n",
+        "               'covidkaya': ['caseid_covidkaya'],\n",
+        "               'exact': ['name_full','middlename','bdate','sex'],\n",
+        "               'name_sex': ['name_full','sex'], # NEW! \n",
+        "               'name_bdate': ['name_full', 'bdate'],\n",
+        "               'name_bdate_cons': ['name_full_consonants', 'bdate'],\n",
+        "               'name_age': ['name_full', 'age', 'sex'],\n",
+        "               'name_age_cons': ['name_full_consonants', 'age', 'sex'],\n",
+        "               'name_age_adj1': ['name_full', 'age_adj1', 'sex'],\n",
+        "               'name_age_adj2': ['name_full', 'age_adj2', 'sex'],\n",
+        "               'name_age_adj1_cons': ['name_full_consonants', 'age_adj1', 'sex'],\n",
+        "               'name_age_adj2_cons': ['name_full_consonants', 'age_adj2', 'sex'],\n",
+        "               'name_lab': ['name_full', 'confirminglab', 'sex'],\n",
+        "               'name_dru': ['name_full', 'dru', 'sex'],\n",
+        "               'bdate_lab': ['bdate', 'confirminglab', 'firstname'],\n",
+        "               'bdate_lab2': ['bdate', 'confirminglab', 'initials', 'sex'],\n",
+        "               'bdate_dru':  ['bdate', 'dru', 'firstname'],\n",
+        "               'bdate_dru2': ['bdate', 'dru', 'initials', 'sex']\n",
+        "              }\n",
+        "\n",
+        "# Come up with the exact and probable matches\n",
+        "for ind, k in enumerate(dupe_combos.keys()):\n",
+        "\n",
+        "    # Create the new duplicate column\n",
+        "    df = get_dupe(df, dupe_combos[k], k)\n",
+        "    dupe_column = 'dupe_' + k\n",
+        "\n",
+        "    # Initiate the exact_duplicates and probable_duplicate columns as dupe_casenumber\n",
+        "    if ind == 0:\n",
+        "        df['exact_duplicates'] = df[dupe_column]\n",
+        "        df['probable_duplicates'] = df[dupe_column]\n",
+        "\n",
+        "        # Undo if not match\n",
+        "        df['exact_duplicates'] = df.exact_duplicates.map(df.groupby('exact_duplicates').apply(lambda x: remove_if_fails_checks_exact(x, dup_col='exact_duplicates')))\n",
+        " \n",
+        "    else:\n",
+        "        # Undo bad matches\n",
+        "        df[dupe_column] = df[dupe_column].map(df.groupby(dupe_column).apply(lambda x: remove_if_fails_checks_fuzzy(x, dup_col=dupe_column)))\n",
+        " \n",
+        "        # Make sure duplicates are counted across multiple conditions\n",
+        "        df.loc[df[dupe_column] > 0, dupe_column] = df.loc[df[dupe_column] > 0, dupe_column] + max(df.probable_duplicates)\n",
+        "\n",
+        "        # Collapse into probable_duplicates\n",
+        "        df.loc[(df.probable_duplicates > 0) | (df[dupe_column] > 0), 'probable_duplicates'] = df.loc[(df.probable_duplicates > 0) | (df[dupe_column] > 0)].apply(\n",
+        "            lambda x: \n",
+        "            x.probable_duplicates if x.probable_duplicates > 0\n",
+        "            else df[(df.probable_duplicates > 0) & (df[dupe_column] == x[dupe_column])].probable_duplicates.values[0]\n",
+        "            if (x[dupe_column] > 0 and df[(df[dupe_column] == x[dupe_column])][['probable_duplicates',dupe_column]].drop_duplicates().shape[0] > 1)\n",
+        "            else x[dupe_column] if x[dupe_column] > 0\n",
+        "            else x.probable_duplicates,\n",
+        "            axis=1\n",
+        "        )\n",
+        "        \n",
+        "        # Collapse the exact duplicates\n",
+        "        if k in ['casenumber','covidkaya','exact']:\n",
+        "          df[dupe_column] = df[dupe_column].map(df.groupby(dupe_column).apply(lambda x: remove_if_fails_checks_exact(x, dup_col=dupe_column)))\n",
+        "\n",
+        "          df.loc[(df.exact_duplicates > 0) | (df[dupe_column] > 0), 'exact_duplicates'] = df.loc[(df.exact_duplicates > 0) | (df[dupe_column] > 0)].apply(\n",
+        "              lambda x: \n",
+        "              x.exact_duplicates if x.exact_duplicates > 0\n",
+        "              else df[(df.exact_duplicates > 0) & (df[dupe_column] == x[dupe_column])].exact_duplicates.values[0]\n",
+        "              if (x[dupe_column] > 0 and df[(df[dupe_column] == x[dupe_column])][['exact_duplicates',dupe_column]].drop_duplicates().shape[0] > 1)\n",
+        "              else x[dupe_column] if x[dupe_column] > 0\n",
+        "              else x.exact_duplicates,\n",
+        "              axis=1\n",
+        "          )"
+      ],
+      "execution_count": 139,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "l_-P0_oPWuOp",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 54
+        },
+        "outputId": "a1708ca9-c387-4604-d24a-a179a86b3ca2"
+      },
+      "source": [
+        "# Summarize! \n",
+        "print(\"There are {} observations that could be strict duplicates, in {} sets\".format(len(df[(df.exact_duplicates.notnull()) & (df.exact_duplicates > 0)]), df.exact_duplicates.nunique()))\n",
+        "print(\"There are {} observations that could be general duplicates, in {} sets\".format(len(df[(df.probable_duplicates.notnull()) & (df.probable_duplicates > 0)]), df.probable_duplicates.nunique()))"
+      ],
+      "execution_count": 140,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "There are 464 observations that could be strict duplicates, in 230 sets\n",
+            "There are 1702 observations that could be general duplicates, in 829 sets\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jkn2LUzLZ3FR",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Indicate reasons for matching duplicates"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0wRg1gRdWuOu",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Summarize the reasons for exact duplicates occurring\n",
+        "df['exact_duplicates_reason'] = df.apply(lambda x: \"Duplicate casenumber\" if x.dupe_casenumber > 0 \n",
+        "                                         else \"Duplicate caseid_covidkaya\" if x.dupe_covidkaya > 0\n",
+        "                                         else \"Same lastname, firstname, middlename bdate, sex\" if x.dupe_exact > 0\n",
+        "                                         else np.nan, axis=1)"
+      ],
+      "execution_count": 141,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "NoROq7qBWuOx",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Summarize the probable reasons for duplicates occurring\n",
+        "df['probable_duplicates_reason'] = df.apply(lambda x: \"Duplicate casenumber\" if x.dupe_casenumber > 0\n",
+        "                                            else \"Duplicate caseid_covidkaya\" if x.dupe_covidkaya > 0\n",
+        "                                            else \"Same lastname, firstname, middlename bdate, sex\" if x.dupe_exact > 0\n",
+        "                                            else \"Same lastname, firstname, bdate\" if x.dupe_name_bdate > 0 or x.dupe_name_bdate_cons > 0\n",
+        "                                            else \"Same lastname, firstname, age, sex\" if x.dupe_name_age > 0 or x.dupe_name_age_cons > 0 or x.dupe_name_age_adj1 > 0 or x.dupe_name_age_adj2 > 0 or x.dupe_name_age_adj1_cons > 0 or x.dupe_name_age_adj2_cons > 0\n",
+        "                                            else \"Same lastname, firstname, confirminglab, sex\" if x.dupe_name_lab > 0\n",
+        "                                            else \"Same lastname, firstname, dru, sex\" if x.dupe_name_dru > 0\n",
+        "                                            else \"Same firstname, bdate, confirminglab\" if x.dupe_bdate_lab > 0\n",
+        "                                            else \"Same initials, sex, bdate, confirminglab, dru\" if x.dupe_bdate_lab2 > 0 \n",
+        "                                            else \"Same firstname, bdate, dru\" if x.dupe_bdate_dru > 0\n",
+        "                                            else \"Same initials, sex, bdate, dru\" if x.dupe_bdate_dru2 > 0 \n",
+        "                                            else np.nan, axis=1)\n",
+        "df.loc[df.probable_duplicates.isnull(), 'probable_duplicates_reason'] = np.nan"
+      ],
+      "execution_count": 142,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "am7HgfAUWuO2",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 72
+        },
+        "outputId": "0270b649-bd5c-4fc8-d747-d58d53135acc"
+      },
+      "source": [
+        "# Common reasons for exact duplication\n",
+        "display(df.exact_duplicates_reason.value_counts())"
+      ],
+      "execution_count": 143,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "Duplicate casenumber                               390\n",
+              "Same lastname, firstname, middlename bdate, sex    100\n",
+              "Name: exact_duplicates_reason, dtype: int64"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nHqzKY8EWuO6",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 217
+        },
+        "outputId": "6748bbae-7c21-434e-a265-73781ef4772e"
+      },
+      "source": [
+        "# Common reasons for general duplication\n",
+        "display(df.probable_duplicates_reason.value_counts())"
+      ],
+      "execution_count": 144,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "Same lastname, firstname, age, sex                 416\n",
+              "Duplicate casenumber                               390\n",
+              "Same lastname, firstname, bdate                    200\n",
+              "Same lastname, firstname, confirminglab, sex       186\n",
+              "Same lastname, firstname, middlename bdate, sex    100\n",
+              "Same initials, sex, bdate, confirminglab, dru       93\n",
+              "Same firstname, bdate, confirminglab                68\n",
+              "Same lastname, firstname, dru, sex                  12\n",
+              "Same initials, sex, bdate, dru                       3\n",
+              "Same firstname, bdate, dru                           2\n",
+              "Name: probable_duplicates_reason, dtype: int64"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0xD94kosWuO-",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Rename to \"strict\" and \"general\"\n",
+        "df.rename(columns={'exact_duplicates': 'strict_duplicates',\n",
+        "                 'probable_duplicates': 'general_duplicates',\n",
+        "                 'exact_duplicates_reason': 'strict_duplicates_reason',\n",
+        "                 'probable_duplicates_reason': 'general_duplicates_reason'}, inplace=True)"
+      ],
+      "execution_count": 145,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "fGCeXgQkuxKS",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Create a column to indicate whether a UIC was present in the linelist yesterday\n",
+        "uic_yday = set(eb_yday.caseid_covidkaya)\n",
+        "df['found_in_linelist_yesterday'] = df.caseid_covidkaya.isin(uic_yday)"
+      ],
+      "execution_count": 146,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "IRHn57xDWuPK",
+        "colab_type": "text"
+      },
+      "source": [
+        "# 🌐 Imputing Proxy Region\n",
+        "\n",
+        "Here's how we'll approximate a value for the observations still without `proxyregion` :\n",
+        "1. If it has a value for `dru` or `otherreportingunit` (used in cases where `dru` == \"OTHER REPORTING UNIT\" ), then we'll see the previous linelist (through `eb_yday` if this `dru` freetext is mapped to just one `region_dru` value. If yes, then we'll take that value for `region_dru`. \n",
+        "2. For the remaining cases, we'll geocode the `dru`/`otherreportingunit` free text through Google Maps."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "uqH_MpawWuPK",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "## Change all empty proxyregion values to nans\n",
+        "df.loc[df.proxyregion == \"\", 'proxyregion'] = np.nan\n",
+        "\n",
+        "## Columns containing information about DRU location\n",
+        "loc_columns = ['currentregion','region_dru','dru','otherreportingunit']\n",
+        "    \n",
+        "## Merge the two categorical columns\n",
+        "df['proxyregion_new'] = df.apply(lambda x: x.currentregion if str(x.currentregion) != 'nan' \n",
+        "                                 else x.region_dru if str(x.region_dru) != 'nan' else np.nan, axis=1)\n",
+        "df['proxyregion_new'] = df.apply(lambda x: np.nan if '#' in str(x.proxyregion) else x.proxyregion_new, axis=1)\n",
+        "\n",
+        "## Combines the dru and other reporting unit columns + patient address\n",
+        "df['dru_freetext'] = df.apply(lambda x: x.dru if x.dru is not None and str(x.dru) != 'nan'\n",
+        "                              else x.otherreportingunit if x.dru is None or str(x.dru) == 'nan' or x.dru=='OTHER REPORTING UNIT'\n",
+        "                              else x.currenthousenolotbldgstreet if str(x.dru) == 'nan'\n",
+        "                              else x.remarks.replace(\"DRU\",\"\").replace(\": \",\"\").strip() if \"DRU\" in x.remarks\n",
+        "                              else np.nan, axis=1)\n",
+        "\n",
+        "df['dru_freetext_basis'] = df.apply(lambda x: \"Geocode - dru\" if x.dru is not None and str(x.dru) != 'nan'\n",
+        "                              else \"Geocode - otherreportingunit\" if x.dru is None or str(x.dru) == 'nan' or x.dru=='OTHER REPORTING UNIT'\n",
+        "                              else \"Geocode - currenthousenolotbldgstreet\" if str(x.dru) == 'nan'\n",
+        "                              else \"Geocode - remarks\" if \"DRU\" in x.remarks\n",
+        "                              else np.nan, axis=1)"
+      ],
+      "execution_count": 147,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "gBvcHHBqWuPO",
+        "colab_type": "text"
+      },
+      "source": [
+        "#### Learn from the past\n",
+        "This section of code grabs all the past linelists and creates a lookup table of freetext_dru to region_dru."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "C8-Of58dWuPO",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "## Looks for dru-region_dru mappings in the latest linelist\n",
+        "\n",
+        "ebfinal_columns = gbq.read_gbq(\"\"\"SELECT column_name FROM `doh-covid-dwh`.ebcases_10_source.INFORMATION_SCHEMA.COLUMNS WHERE table_name='linelist_latest' \"\"\", project_id=\"doh-covid-dwh\")\n",
+        "\n",
+        "# Get a reference mapping of dru, otherreportingunit, and currenthousenolotbldgstreet to region_dru\n",
+        "if 'otherreportingunit' in set(ebfinal_columns.column_name):\n",
+        "    ref_query = '''\n",
+        "    SELECT \n",
+        "        TRIM(UPPER(dru)) dru, \n",
+        "        region_dru, \n",
+        "        TRIM(UPPER(otherreportingunit)) otherreportingunit,\n",
+        "        TRIM(UPPER(currenthousenolotbldgstreet)) currenthousenolotbldgstreet\n",
+        "    FROM `doh-covid-dwh.ebcases_10_source.linelist_latest`'''\n",
+        "    ref = pd.read_gbq(ref_query)\n",
+        "    ref['loc'] = ref.apply(lambda x: x.otherreportingunit if x.dru is None or x.dru=='OTHER REPORTING UNIT'\n",
+        "                           else x.currenthousenolotbldgstreet if str(x.dru) == 'nan'\n",
+        "                           else x.dru, axis=1)\n",
+        "else:\n",
+        "    ref_query = '''SELECT dru, region_dru\n",
+        "    FROM `doh-covid-dwh.ebcases_10_source.linelist_latest`'''\n",
+        "    ref = pd.read_gbq(ref_query)\n",
+        "    ref['loc'] = ref.apply(lambda x: x.currenthousenolotbldgstreet if str(x.dru) == 'nan'\n",
+        "                           else x.dru, axis=1)\n",
+        "\n",
+        "\"\"\" Creates a lookup table:\n",
+        "If there was exactly one non-null region assigned to the freeform text, \n",
+        "then we assign it to that region\n",
+        "\"\"\"\n",
+        "ref2 = ref[ref.region_dru.notnull()].groupby('loc').region_dru.apply(set)\n",
+        "ref2 = ref2[ref2.map(len)==1].map(list)\n",
+        "ref2 = ref2.map(lambda x: x[0])\n",
+        "\n",
+        "## Creates derived from past linelists\n",
+        "df['proxyregion_pastresults'] = df.dru_freetext.map(ref2)"
+      ],
+      "execution_count": 148,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SjlV7Gp3WuPS",
+        "colab_type": "text"
+      },
+      "source": [
+        "#### Geocoding"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "sireWNJ0WuPS",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!pip install -q geopandas \"rtree>=0.8,<0.9\"\n",
+        "!sudo apt-get -qq update && apt-get -qq install -y libspatialindex-dev\n",
+        "\n",
+        "import geopandas as gpd\n",
+        "import shapely\n",
+        "from geopandas.tools import sjoin\n",
+        "\n",
+        "# Obtain the shapes per region name\n",
+        "region_map = gbq.read_gbq(\"\"\"SELECT * FROM `doh-covid-dwh.address_parsing.region_shapes`\"\"\", \n",
+        "                           project_id='doh-covid-dwh')\n",
+        "region_map['geometry'] = region_map.geometry.apply(lambda x: shapely.wkt.loads(x))\n",
+        "region_map = gpd.GeoDataFrame(region_map, geometry='geometry')\n",
+        "\n",
+        "def geocodeme_gmaps(location):\n",
+        "    '''Geocodes the location using the gmaps API.'''\n",
+        "    response = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address='+\n",
+        "                                location+'&region=PH&key='+\"AIzaSyBxXa4kBKFn2m_g_3TIqK75YDaDHrx4Jx4\")\n",
+        "    return response.json()\n",
+        "\n",
+        "def get_latlng_from_gmaps(loc_json, best_guess=True):\n",
+        "    results = loc_json['results']\n",
+        "    if not results:\n",
+        "        return np.nan\n",
+        "    results = results[0]['geometry']['location']\n",
+        "    pt = Point(results['lng'],results['lat'])\n",
+        "    return pt"
+      ],
+      "execution_count": 149,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "O7PR5ZujWuPW",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 90
+        },
+        "outputId": "18482fdc-ff08-4957-b58f-99d69452879c"
+      },
+      "source": [
+        "## Subsets the columns which have a null proxy region\n",
+        "import requests \n",
+        "from shapely.geometry import Point\n",
+        "from shapely import wkt\n",
+        "\n",
+        "freetext = df[df.proxyregion.isnull() \n",
+        "              & df.proxyregion_new.isnull() \n",
+        "              & df.proxyregion_pastresults.isnull()]['dru_freetext']\n",
+        "freetext = freetext.value_counts()\n",
+        "freetext = pd.DataFrame(freetext).reset_index()\n",
+        "freetext.columns = ['raw', 'count']\n",
+        "print(len(freetext))\n",
+        "\n",
+        "# passes the freeform text to gmaps, gets back a json about gmap's guess\n",
+        "freetext['geocoded'] = freetext.raw.map(geocodeme_gmaps) ## ask gmaps to geocode it\n",
+        "freetext['latlng'] = freetext['geocoded'].map(get_latlng_from_gmaps)\n",
+        "\n",
+        "# # we bash gmap's guess against the reference dataframe\n",
+        "freetext = gpd.GeoDataFrame(freetext, geometry='latlng')\n",
+        "freetext = sjoin(freetext[freetext.latlng.notnull()], region_map, how='left')\n",
+        "\n",
+        "today = dt.now().strftime(\"%Y%m%d-%H%M\") ## get current time\n",
+        "# freetext.to_pickle('20_geocoded/{}.pkl'.format(today)) ## save it so we have a daily record\n",
+        "\n",
+        "freetext = freetext.set_index('raw') ## set the raw freetext as index\n",
+        "freetext.drop('geocoded', axis=1) ## display it for visual checking\n",
+        "freetext.to_csv(f'{pht_date_today}_geocoded.csv')\n",
+        "!gsutil cp *_geocoded.csv gs://doh-covid-data-managers/archive"
+      ],
+      "execution_count": 150,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "76\n",
+            "Copying file://20200705_geocoded.csv [Content-Type=text/csv]...\n",
+            "-\n",
+            "Operation completed over 1 objects/76.4 KiB.                                     \n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5bN4HLnUWuPZ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Derive the proxyregion_new column based on all our past information\n",
+        "df['proxyregion_geocoded'] = df.dru_freetext.map(freetext.Reg_DOH_Name)\n",
+        "df['proxyregion_new'] = df.apply(lambda x: x.proxyregion if str(x.proxyregion) != 'nan'\n",
+        "                                else x.proxyregion_pastresults if str(x.proxyregion_pastresults) != 'nan'\n",
+        "                                else x.proxyregion_geocoded, axis=1)\n",
+        "\n",
+        "# Add a column to explain how the proxyregion_new was derived\n",
+        "df['proxyregion_how'] = df.apply(lambda x: \"Current region\" if str(x.currentregion) != 'nan'\n",
+        "                                else \"Region DRU\" if str(x.region_dru) != 'nan'\n",
+        "                                else \"Past region_dru for same DRU name or address\" if str(x.proxyregion_pastresults) != 'nan'\n",
+        "                                else x.dru_freetext_basis if str(x.proxyregion_geocoded) != 'nan' else \"\", axis=1)"
+      ],
+      "execution_count": 151,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "EqaULpbrWuPe",
+        "colab_type": "text"
+      },
+      "source": [
+        "# 📅 Date, PSGC and Misc Checks"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "632-KrauWuPh",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Write all the checks"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "LQkh1r7A-084",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# !gsutil cp gs://doh-covid-data-managers/scripts/*\n",
+        "import checks"
+      ],
+      "execution_count": 152,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Wl13vgSsrUUR",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "from importlib import reload\n",
+        "checks = reload(checks)"
+      ],
+      "execution_count": 153,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "J3pYKyK58j3z",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 198
+        },
+        "outputId": "757dac6d-f2c8-4c21-f34e-130d4dc66510"
+      },
+      "source": [
+        "pk = 'caseid_covidkaya'\n",
+        "df = checks.add_anomaly_lists(df, pk)\n",
+        "display(df[['casenumber','caseid_covidkaya'] + \n",
+        "           [c for c in df.columns if 'issues' in c]].head())"
+      ],
+      "execution_count": 154,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>casenumber</th>\n",
+              "      <th>caseid_covidkaya</th>\n",
+              "      <th>date_issues</th>\n",
+              "      <th>loc_issues</th>\n",
+              "      <th>misc_issues</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>PH31076</td>\n",
+              "      <td>XGS8Y5LW6G</td>\n",
+              "      <td>Date onset is blank, lab result is not null, b...</td>\n",
+              "      <td>Barangay is blank, Municipality/City is blank,...</td>\n",
+              "      <td>Mobile_number is missing</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>PH30855</td>\n",
+              "      <td>S0CRRD7YEJ</td>\n",
+              "      <td>Admitted date is blank, lab result is not null...</td>\n",
+              "      <td>Barangay is blank, Province is blank, Region i...</td>\n",
+              "      <td>Mobile_number is missing</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>PH31408</td>\n",
+              "      <td>U78ZFMTGT6</td>\n",
+              "      <td>Date onset is blank, Admitted date is blank, S...</td>\n",
+              "      <td>Region is blank, Province is blank, Municipali...</td>\n",
+              "      <td>Mobile_number is missing</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>PH32353</td>\n",
+              "      <td>7J1Q1LDXRO</td>\n",
+              "      <td>Admitted date is blank, lab result is not null...</td>\n",
+              "      <td>Region is blank, Province is blank, Municipali...</td>\n",
+              "      <td>Mobile_number is missing</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>NaN</td>\n",
+              "      <td>RP5HXLLZDS</td>\n",
+              "      <td>Date onset is blank, Squarantine date is blank...</td>\n",
+              "      <td>Barangay is blank, Municipality/City is blank,...</td>\n",
+              "      <td>Mobile_number is missing</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "  casenumber  ...               misc_issues\n",
+              "0    PH31076  ...  Mobile_number is missing\n",
+              "1    PH30855  ...  Mobile_number is missing\n",
+              "2    PH31408  ...  Mobile_number is missing\n",
+              "3    PH32353  ...  Mobile_number is missing\n",
+              "4        NaN  ...  Mobile_number is missing\n",
+              "\n",
+              "[5 rows x 5 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Jft-Q2SwWuP7",
+        "colab_type": "text"
+      },
+      "source": [
+        "# 🚀 Finish! "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "AXQhrkseFeAx",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 126
+        },
+        "outputId": "9d6db5a7-920e-45f5-86db-251d1d286324"
+      },
+      "source": [
+        "# # # TEMP JULY 4 -- CODE FOR ERASING PREVIOUS FALSE POSITIVE DUPLICATES\n",
+        "!gsutil cp  gs://doh-covid-data-managers/dupe_decisions/diff_people.csv .\n",
+        "!gsutil cp  gs://doh-covid-data-managers/dupe_decisions/real_dupes.csv .\n",
+        "\n",
+        "a = pd.read_csv('real_dupes.csv')\n",
+        "b = pd.read_csv('diff_people.csv')\n",
+        "blacklist = pd.concat([\n",
+        "                       a\n",
+        "                      #  b\n",
+        "                       ]).caseid_covidkaya.values\n",
+        "blacklist = [set(i) for i in blacklist]\n",
+        "groups_tagged_yday = df.groupby('general_duplicates')['caseid_covidkaya'].apply(lambda x: set(x) in blacklist)\n",
+        "groups_tagged_yday = groups_tagged_yday[groups_tagged_yday]\n",
+        "df['groups_tagged_yday'] = df['general_duplicates'].isin(groups_tagged_yday)\n",
+        "df['general_duplicates'] = df['general_duplicates'].map(lambda x: x if x not in groups_tagged_yday else np.nan) \n",
+        "\n",
+        "groups_tagged_yday_strict = df.groupby('strict_duplicates')['caseid_covidkaya'].apply(lambda x: set(x) in blacklist)\n",
+        "groups_tagged_yday_strict = groups_tagged_yday_strict[groups_tagged_yday_strict]\n",
+        "df['groups_tagged_yday_strict'] = df['strict_duplicates'].isin(groups_tagged_yday)\n",
+        "df['strict_duplicates'] = df['strict_duplicates'].map(lambda x: x if x not in groups_tagged_yday_strict else np.nan) "
+      ],
+      "execution_count": 155,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Copying gs://doh-covid-data-managers/dupe_decisions/diff_people.csv...\n",
+            "/ [1 files][  8.3 KiB/  8.3 KiB]                                                \n",
+            "Operation completed over 1 objects/8.3 KiB.                                      \n",
+            "Copying gs://doh-covid-data-managers/dupe_decisions/real_dupes.csv...\n",
+            "/ [1 files][ 29.9 KiB/ 29.9 KiB]                                                \n",
+            "Operation completed over 1 objects/29.9 KiB.                                     \n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "R-hapd2gqLYp",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Reformatting requests\n",
+        "\n",
+        "# Remove PH from PSGCs\n",
+        "for psgc in ['regionpsgc','provincepsgc','municipalitycitypsgc']:\n",
+        "  df[psgc] = df[psgc].str.replace(\"PH\",\"\")"
+      ],
+      "execution_count": 156,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "tjuot4EbWuP7",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Delete the columns we don't need\n",
+        "# dupe_cols = [c for c in df.columns.values if 'dupe_' in c]\n",
+        "# new_cols = ['casenum_yday', 'age_adj1', 'age_adj2', 'flag_wrong_name', 'name_full','name_full_consonants',\n",
+        "#             'person_updated','proxyregion_pastresults', 'initials','dru_freetext_basis'\n",
+        "#             'proxyregion_geocoded','name_full','middleinitial'] + dupe_cols\n",
+        "# new_cols = [i for i in new_cols if i in df.columns]\n",
+        "# df = df.drop(new_cols, axis=1)"
+      ],
+      "execution_count": 157,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "x-pHHOV32g8z",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "## Preprocessing code from data managers (orig version below) ##\n",
+        "\n",
+        "mask = df.report_date.isna() & ~df.found_in_linelist_yesterday\n",
+        "df.loc[mask, 'report_date'] = pht_date_today\n",
+        "\n",
+        "# append name column\n",
+        "name = df[['lastname', 'firstname', 'middlename']]\n",
+        "name = name.fillna('')\n",
+        "name = name.lastname + \", \" + name.firstname + \" \" + name.middlename\n",
+        "name = name.str.strip()\n",
+        "df['name'] = name\n",
+        "\n",
+        "# merge some muncities which comprise manila\n",
+        "manila = [\n",
+        "    'Ermita', 'Malate', 'Pandacan', 'Quiapo', 'Sampaloc', 'Santa Ana', \n",
+        "    'Santa Cruz', 'Binondo', 'Paco', 'Tondo I / II', 'San Nicolas', \n",
+        "    'San Miguel', 'Intramuros', 'Port Area']\n",
+        "\n",
+        "df['currentmunicipalitycity'] = df['currentmunicipalitycity'].str.title()\n",
+        "df['currentmuncity'] = df['currentmunicipalitycity'].map(lambda muncity: \n",
+        "                         'Manila' if muncity in manila else muncity)"
+      ],
+      "execution_count": 158,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EB4t5asXWuP-",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Put the duplicated entries front and center\n",
+        "df.sort_values(['strict_duplicates','general_duplicates'], inplace=True)"
+      ],
+      "execution_count": 159,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "CWjjiX8kIhva",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 417
+        },
+        "outputId": "d6b66c21-802a-4902-f304-649cd255d8fc"
+      },
+      "source": [
+        "# Split up the files and move to GCS\n",
+        "# https://console.cloud.google.com/storage/browser/doh-covid-data-managers/manual_deduping/?forceOnBucketsSortingFiltering=false&project=doh-covid-dwh\n",
+        "\n",
+        "new_cols = ['is_duplicate', 'action', 'updated_health_status']\n",
+        "new_cols = pd.DataFrame(columns=new_cols)\n",
+        "df2 = pd.concat([new_cols, df])\n",
+        "df2 = df2[df2.general_duplicates!=0]\n",
+        "df2['completeness'] = (160 - df2['missing_columns'])*3 ### should we fillna 0's and blanks before recomputing?\n",
+        "df2['completeness'] = df2['completeness'].fillna(0).astype(int)\n",
+        "df2['general_duplicates'] = df2['general_duplicates'].astype(int)\n",
+        "\n",
+        "impt_cols = [\n",
+        "    'strict_duplicates', 'found_in_linelist_yesterday', 'general_duplicates',  #you don't need to look at it often\n",
+        "    'report_date', 'completeness', 'casenumber', 'caseid_covidkaya', 'skip_number', # helps you judge which to keep\n",
+        "    'healthstatus', 'updated_health_status', # itabi natin sa is_duplicate\n",
+        "    'is_duplicate', 'action', # new columns\n",
+        "    ### piis ###\n",
+        "    'firstname', 'middlename', 'lastname', 'bdate', 'age', 'sex', 'civilstatus',\n",
+        "    'currenthousenolotbldgstreet', 'permanent_housenolotbldgstreet', 'permanent_province',\n",
+        "    'confirminglab'\n",
+        "    ]\n",
+        "\n",
+        "cols = impt_cols + list([i for i in df2.columns if i not in impt_cols])\n",
+        "df2['found_in_linelist_yesterday'] = df2['found_in_linelist_yesterday'].map(lambda x: 'Y' if x else '')\n",
+        "\n",
+        "df2 = df2[cols]\n",
+        "df2.sort_values(['general_duplicates', 'report_date'], inplace=True)\n",
+        "df2 = df2.fillna('').replace(0, '')\n",
+        "date_cols = [col for col in df2.columns if '_date' in col]\n",
+        "date_cols = ['bdate'] + date_cols\n",
+        "df2[date_cols] = df2[date_cols].astype(str).transform(lambda col: col.str[:10])\n",
+        "\n",
+        "manual_recheckers = 5\n",
+        "groups = df2.general_duplicates.unique()\n",
+        "n = int(len(groups)/manual_recheckers)\n",
+        "for i in range(manual_recheckers):\n",
+        "    fname = f'{pht_date_tom}_manual_dedup_{i}.csv'\n",
+        "    group = groups[i*n:(i+1)*n-1]\n",
+        "    temp = df2[df2.general_duplicates.isin(group)]\n",
+        "    temp.sort_values(['general_duplicates', 'report_date'], inplace=True)\n",
+        "    temp.to_csv(fname, index=False)\n",
+        "    print(f'{i}: {temp.shape}')\n",
+        "\n",
+        "!gsutil cp *_manual_dedup_*.csv gs://doh-covid-data-managers/manual_deduping/"
+      ],
+      "execution_count": 160,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:40: SettingWithCopyWarning: \n",
+            "A value is trying to be set on a copy of a slice from a DataFrame\n",
+            "\n",
+            "See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "0: (338, 184)\n",
+            "1: (343, 184)\n",
+            "2: (343, 184)\n",
+            "3: (331, 184)\n",
+            "4: (331, 184)\n",
+            "Copying file://20200706_manual_dedup_0.csv [Content-Type=text/csv]...\n",
+            "Copying file://20200706_manual_dedup_1.csv [Content-Type=text/csv]...\n",
+            "Copying file://20200706_manual_dedup_2.csv [Content-Type=text/csv]...\n",
+            "Copying file://20200706_manual_dedup_3.csv [Content-Type=text/csv]...\n",
+            "/\n",
+            "==> NOTE: You are performing a sequence of gsutil operations that may\n",
+            "run significantly faster if you instead use gsutil -m cp ... Please\n",
+            "see the -m section under \"gsutil help options\" for further information\n",
+            "about when gsutil -m can be advantageous.\n",
+            "\n",
+            "Copying file://20200706_manual_dedup_4.csv [Content-Type=text/csv]...\n",
+            "-\n",
+            "Operation completed over 5 objects/1.9 MiB.                                      \n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KsQKXMGhWuQA",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Write to csv\n",
+        "file_name = f'linelist_checks_{pht_date_tom}.csv'\n",
+        "df.to_csv(file_name)"
+      ],
+      "execution_count": 161,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "NMDLJTc3avU-",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 69
+        },
+        "outputId": "5727d8ce-aee0-4eed-edbb-d7be7add336a"
+      },
+      "source": [
+        "# # Download the .csv locally\n",
+        "# from google.colab import files\n",
+        "# files.download(f'names_changed_{pht_date_tom}.csv')\n",
+        "# files.download(f'linelist_checks_{pht_date_tom}.csv')\n",
+        "# if len(dup_covidkaya) > 0:\n",
+        "#   files.download(f'dup_covidkaya_{pht_date_yday}.csv')"
+      ],
+      "execution_count": 162,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/javascript": [
+              "\n",
+              "    async function download(id, filename, size) {\n",
+              "      if (!google.colab.kernel.accessAllowed) {\n",
+              "        return;\n",
+              "      }\n",
+              "      const div = document.createElement('div');\n",
+              "      const label = document.createElement('label');\n",
+              "      label.textContent = `Downloading \"${filename}\": `;\n",
+              "      div.appendChild(label);\n",
+              "      const progress = document.createElement('progress');\n",
+              "      progress.max = size;\n",
+              "      div.appendChild(progress);\n",
+              "      document.body.appendChild(div);\n",
+              "\n",
+              "      const buffers = [];\n",
+              "      let downloaded = 0;\n",
+              "\n",
+              "      const channel = await google.colab.kernel.comms.open(id);\n",
+              "      // Send a message to notify the kernel that we're ready.\n",
+              "      channel.send({})\n",
+              "\n",
+              "      for await (const message of channel.messages) {\n",
+              "        // Send a message to notify the kernel that we're ready.\n",
+              "        channel.send({})\n",
+              "        if (message.buffers) {\n",
+              "          for (const buffer of message.buffers) {\n",
+              "            buffers.push(buffer);\n",
+              "            downloaded += buffer.byteLength;\n",
+              "            progress.value = downloaded;\n",
+              "          }\n",
+              "        }\n",
+              "      }\n",
+              "      const blob = new Blob(buffers, {type: 'application/binary'});\n",
+              "      const a = document.createElement('a');\n",
+              "      a.href = window.URL.createObjectURL(blob);\n",
+              "      a.download = filename;\n",
+              "      div.appendChild(a);\n",
+              "      a.click();\n",
+              "      div.remove();\n",
+              "    }\n",
+              "  "
+            ],
+            "text/plain": [
+              "<IPython.core.display.Javascript object>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/javascript": [
+              "download(\"download_d11cb02b-116f-4211-a7ec-ebed5f9677b6\", \"names_changed_20200706.csv\", 1993)"
+            ],
+            "text/plain": [
+              "<IPython.core.display.Javascript object>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/javascript": [
+              "\n",
+              "    async function download(id, filename, size) {\n",
+              "      if (!google.colab.kernel.accessAllowed) {\n",
+              "        return;\n",
+              "      }\n",
+              "      const div = document.createElement('div');\n",
+              "      const label = document.createElement('label');\n",
+              "      label.textContent = `Downloading \"${filename}\": `;\n",
+              "      div.appendChild(label);\n",
+              "      const progress = document.createElement('progress');\n",
+              "      progress.max = size;\n",
+              "      div.appendChild(progress);\n",
+              "      document.body.appendChild(div);\n",
+              "\n",
+              "      const buffers = [];\n",
+              "      let downloaded = 0;\n",
+              "\n",
+              "      const channel = await google.colab.kernel.comms.open(id);\n",
+              "      // Send a message to notify the kernel that we're ready.\n",
+              "      channel.send({})\n",
+              "\n",
+              "      for await (const message of channel.messages) {\n",
+              "        // Send a message to notify the kernel that we're ready.\n",
+              "        channel.send({})\n",
+              "        if (message.buffers) {\n",
+              "          for (const buffer of message.buffers) {\n",
+              "            buffers.push(buffer);\n",
+              "            downloaded += buffer.byteLength;\n",
+              "            progress.value = downloaded;\n",
+              "          }\n",
+              "        }\n",
+              "      }\n",
+              "      const blob = new Blob(buffers, {type: 'application/binary'});\n",
+              "      const a = document.createElement('a');\n",
+              "      a.href = window.URL.createObjectURL(blob);\n",
+              "      a.download = filename;\n",
+              "      div.appendChild(a);\n",
+              "      a.click();\n",
+              "      div.remove();\n",
+              "    }\n",
+              "  "
+            ],
+            "text/plain": [
+              "<IPython.core.display.Javascript object>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/javascript": [
+              "download(\"download_b6c1d872-0fb2-4853-a38a-fc932f1dd2fd\", \"linelist_checks_20200706.csv\", 55184529)"
+            ],
+            "text/plain": [
+              "<IPython.core.display.Javascript object>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/javascript": [
+              "\n",
+              "    async function download(id, filename, size) {\n",
+              "      if (!google.colab.kernel.accessAllowed) {\n",
+              "        return;\n",
+              "      }\n",
+              "      const div = document.createElement('div');\n",
+              "      const label = document.createElement('label');\n",
+              "      label.textContent = `Downloading \"${filename}\": `;\n",
+              "      div.appendChild(label);\n",
+              "      const progress = document.createElement('progress');\n",
+              "      progress.max = size;\n",
+              "      div.appendChild(progress);\n",
+              "      document.body.appendChild(div);\n",
+              "\n",
+              "      const buffers = [];\n",
+              "      let downloaded = 0;\n",
+              "\n",
+              "      const channel = await google.colab.kernel.comms.open(id);\n",
+              "      // Send a message to notify the kernel that we're ready.\n",
+              "      channel.send({})\n",
+              "\n",
+              "      for await (const message of channel.messages) {\n",
+              "        // Send a message to notify the kernel that we're ready.\n",
+              "        channel.send({})\n",
+              "        if (message.buffers) {\n",
+              "          for (const buffer of message.buffers) {\n",
+              "            buffers.push(buffer);\n",
+              "            downloaded += buffer.byteLength;\n",
+              "            progress.value = downloaded;\n",
+              "          }\n",
+              "        }\n",
+              "      }\n",
+              "      const blob = new Blob(buffers, {type: 'application/binary'});\n",
+              "      const a = document.createElement('a');\n",
+              "      a.href = window.URL.createObjectURL(blob);\n",
+              "      a.download = filename;\n",
+              "      div.appendChild(a);\n",
+              "      a.click();\n",
+              "      div.remove();\n",
+              "    }\n",
+              "  "
+            ],
+            "text/plain": [
+              "<IPython.core.display.Javascript object>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/javascript": [
+              "download(\"download_0c5322b3-2335-4930-ba16-a37d3b90bb8e\", \"dup_covidkaya_20200704.csv\", 3439)"
+            ],
+            "text/plain": [
+              "<IPython.core.display.Javascript object>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "eWX0MjCQ1nVc",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 72
+        },
+        "outputId": "561da995-15ad-48a4-fc18-ae17f5491445"
+      },
+      "source": [
+        "# Load our results to BQ\n",
+        "df.to_gbq('covidkaya_20_trans.checks_' + pht_date_tom, project_id='doh-covid-dwh', if_exists='replace')"
+      ],
+      "execution_count": 163,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "\n",
+            "0it [00:00, ?it/s]\u001b[A\n",
+            "1it [00:40, 40.59s/it]\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "RCzlYK_MWuQL",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 383
+        },
+        "outputId": "d30006f2-202f-49de-d998-a37f89636002"
+      },
+      "source": [
+        "import calendar\n",
+        "pht_dt_tom = (dt.now(pytz.timezone('Asia/Manila')) + timedelta(days=1))\n",
+        "date_tom = pd.to_datetime(pht_dt_tom).month_name() + \" \" + str(pht_dt_tom.day)\n",
+        "\n",
+        "message = f\"\"\"\n",
+        "Hi all!\n",
+        "\n",
+        "Please find here the processed dure extract for {date_tom}.\n",
+        "Summary:\n",
+        "- There were {len(prev_skip_numbers)} observations with empty casenumbers, of which we filled in \n",
+        "{len(prev_skip_numbers) - len(skip_numbers)}. The entries for the following casenumbers were appended from yesterday's linelist: {\", \".join(eb_yday_sub.casenumber)}. \\n\n",
+        "\n",
+        "- We've found {df.strict_duplicates.nunique()} sets of strict duplicates affecting {len(df[(df.strict_duplicates.notnull()) & (df.strict_duplicates != 0)])} cases, \n",
+        "and {df.general_duplicates.nunique()} sets of general duplicates affecting {len(df[(df.general_duplicates.notnull()) & (df.general_duplicates > 0)])} cases. \n",
+        "These are reflected in the strict_duplicates and general_duplicates columns, respectively. \\n\n",
+        "\n",
+        "- We were able to add entries for proxyregion for {df[df.proxyregion_new.notnull()].shape[0] - df[df.proxyregion.notnull()].shape[0]} more cases. \n",
+        "These are reflected in the proxyregion_new column. Beside it are the columns: (a) proxyregion_how to describe how we derived the proxyregion value, and (b) dru_freetext, which contains the DRU/address/remarks free text that we geocoded.\n",
+        "\n",
+        "- Kindly flagging that the patient names for {\", \".join(list(join_issues.casenumber))} have been changed.\n",
+        "\"\"\"\n",
+        "\n",
+        "print(message)\n",
+        "with open(f'message_{date_tom}.log', 'w') as f:\n",
+        "    f.write(message)"
+      ],
+      "execution_count": 164,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "\n",
+            "Hi all!\n",
+            "\n",
+            "Please find here the processed dure extract for July 6.\n",
+            "Summary:\n",
+            "- There were 2026 observations with empty casenumbers, of which we filled in \n",
+            "1958. The entries for the following casenumbers were appended from yesterday's linelist: PH18753, PH27894, PH30492, PH35833, PH36228, PH36287, PH37561, PH37581, PH37620, PH37631, PH37703, PH38038, PH38061, PH38066, PH38145, PH38248, PH38286, PH38358, PH38384, PH38389, PH38396, PH38410, PH38447, PH38475, PH38495, PH38609, PH38610, PH38626, PH38661, PH38696, PH38806, PH39139, PH39230, PH40994, PH37647, PH37606, PH38100, PH26762, PH37066, PH37575, PH37616, PH37617, PH37808, PH37879, PH37975, PH32798, PH38865, PH37723, PH37618, PH38021, PH26610, PH38873, PH37571, PH37663, PH30621, PH37562, PH38710, PH37573, PH37876, PH36617, PH37936, PH37556, PH38228, PH37577, PH38216, PH36232, PH15804, PH15897. \n",
+            "\n",
+            "\n",
+            "- We've found 230 sets of strict duplicates affecting 464 cases, \n",
+            "and 829 sets of general duplicates affecting 1702 cases. \n",
+            "These are reflected in the strict_duplicates and general_duplicates columns, respectively. \n",
+            "\n",
+            "\n",
+            "- We were able to add entries for proxyregion for 2985 more cases. \n",
+            "These are reflected in the proxyregion_new column. Beside it are the columns: (a) proxyregion_how to describe how we derived the proxyregion value, and (b) dru_freetext, which contains the DRU/address/remarks free text that we geocoded.\n",
+            "\n",
+            "- Kindly flagging that the patient names for PH30491, PH36233, PH39328, PH35832, PH36230, PH36286, PH36616, PH38106, PH38529, PH39140, PH39327, PH39334, PH38230, PH38010, PH38131, PH12609, PH20821, PH40993, PH39335 have been changed.\n",
+            "\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "cw_AaU1v9Pym",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 365
+        },
+        "outputId": "22d6aa87-bd4c-45ef-8aaf-837ee98ab4fb"
+      },
+      "source": [
+        "# Export to GCS\n",
+        "!gsutil cp linelist_check*.csv gs://doh-covid-data-managers/archive/\n",
+        "!gsutil cp names_changed_*.csv gs://doh-covid-data-managers/archive/\n",
+        "!gsutil cp dup_covidkaya_*.csv gs://doh-covid-data-managers/archive/\n",
+        "!gsutil cp *.py  gs://doh-covid-data-managers/scripts/\n",
+        "!gsutil cp *.log gs://doh-covid-data-managers/logs/\n",
+        "\n",
+        "print(f\"Files have now been uploaded to https://console.cloud.google.com/storage/browser/doh-covid-data-managers/manual_deduping/?forceOnBucketsSortingFiltering=false&project=doh-covid-dwh\")\n"
+      ],
+      "execution_count": 165,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Copying file://linelist_checks_20200706.csv [Content-Type=text/csv]...\n",
+            "\\\n",
+            "Operation completed over 1 objects/52.6 MiB.                                     \n",
+            "Copying file://names_changed_20200706.csv [Content-Type=text/csv]...\n",
+            "/ [1 files][  2.0 KiB/  2.0 KiB]                                                \n",
+            "Operation completed over 1 objects/2.0 KiB.                                      \n",
+            "Copying file://dup_covidkaya_20200704.csv [Content-Type=text/csv]...\n",
+            "/ [1 files][  3.4 KiB/  3.4 KiB]                                                \n",
+            "Operation completed over 1 objects/3.4 KiB.                                      \n",
+            "Copying file://checks.py [Content-Type=text/x-python]...\n",
+            "Copying file://scripts.py [Content-Type=text/x-python]...\n",
+            "-\n",
+            "Operation completed over 2 objects/15.8 KiB.                                     \n",
+            "Copying file://message_July 6.log [Content-Type=application/octet-stream]...\n",
+            "Copying file://message_THISISADATE.log [Content-Type=application/octet-stream]...\n",
+            "-\n",
+            "Operation completed over 2 objects/1.6 KiB.                                      \n",
+            "Files have now been uploaded to https://console.cloud.google.com/storage/browser/doh-covid-data-managers/manual_deduping/?forceOnBucketsSortingFiltering=false&project=doh-covid-dwh\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "NKVYeM7qWuQf",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "outputId": "0ca06113-8a51-4218-e73b-7a01b3d129a8"
+      },
+      "source": [
+        "raise Exception(\"Place any scratch code below me!\")"
+      ],
+      "execution_count": 166,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "Exception",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mException\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-166-b890fc6d1ac9>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mraise\u001b[0m \u001b[0mException\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Place any scratch code below me!\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mException\u001b[0m: Place any scratch code below me!"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Y8Z1_upmW8ah",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
