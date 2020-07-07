@@ -25,16 +25,16 @@ The [**archive**](/archive) folder hosts older data.
 ## UPDATES
 
 ### Case Information
- * [2020-07-07](data/DOH COVID Data Drop_ 20200704 - 04 Case Information.csv)
+ * [2020-07-07](/data/DOH%20COVID%20Data%20Drop_%2020200704%20-%2004%20Case%20Information.csv)
 
 ### DOH Data Collect Daily Report
- * [2020-07-07](data/DOH COVID Data Drop_ 20200704 - 05 DOH Data Collect - Daily Report.csv)
+ * [2020-07-07](/data/DOH%20COVID%20Data%20Drop_%2020200704%20-%2005%20DOH%20Data%20Collect%20-%20Daily%20Report.csv)
 
 ### DOH Data Collect Weekly Report
- * [2020-07-07](data/DOH COVID Data Drop_ 20200704 - 06 DOH Data Collect - Weekly Report.csv)
+ * [2020-07-07](/data/DOH%20COVID%20Data%20Drop_%2020200704%20-%2006%20DOH%20Data%20Collect%20-%20Weekly%20Report.csv)
 
 ### Testing Aggregates
- * [2020-07-07](data/DOH COVID Data Drop_ 20200704 - 07 Testing Aggregates.csv)
+ * [2020-07-07](/data/DOH%20COVID%20Data%20Drop_%2020200704%20-%2007%20Testing%20Aggregates.csv)
 
 
 This work and its contents is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br>
