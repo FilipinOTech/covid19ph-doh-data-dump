@@ -2,11 +2,14 @@
 
 CSVs of DOH COVID-19 PH Data Dump Google Sheets released by the Philippines' Department of Health (DOH) and accessible [here](https://docs.google.com/spreadsheets/d/1BLbrvgjkBWxr9g73xX9DLOqmbmuYyKc-_b8jIxCX1uo/htmlview#). Cleaned and formatted as CSVs.
 
-The [**data**](https://github.com/benhur07b/covid19ph-doh-data-dump/tree/master/data) folder hosts the most recent data from DOH w/o modifications.
-The [**data-modified**](https://github.com/benhur07b/covid19ph-doh-data-dump/tree/master/data) folder hosts the most recent data from DOH with some modifications (changed field names, field values, etc).
-The [**archive**](https://github.com/benhur07b/covid19ph-doh-data-dump/tree/master/archive) folder hosts older data.
+The [**data**](/data) folder hosts the most recent data from DOH w/o modifications.
+The [**data-modified**](/data-modified) folder hosts the most recent data from DOH with some modifications (changed field names, field values, etc).
+The [**archive**](/archive) folder hosts older data.
 
 ## CHANGELOG
+### 2020-07-07
+* data updated to latest data drop on July 04, 2020; old data archived to respective folders
+
 ### 2020-04-15
 **[data-modified]**
 
@@ -22,16 +25,16 @@ The [**archive**](https://github.com/benhur07b/covid19ph-doh-data-dump/tree/mast
 ## UPDATES
 
 ### Case Information
- * 2020-04.14
+ * [2020-07-07](data/DOH COVID Data Drop_ 20200704 - 04 Case Information.csv)
 
 ### DOH Data Collect Daily Report
- * 2020-04.14
+ * [2020-07-07](data/DOH COVID Data Drop_ 20200704 - 05 DOH Data Collect - Daily Report.csv)
 
 ### DOH Data Collect Weekly Report
- * 2020-04.14
+ * [2020-07-07](data/DOH COVID Data Drop_ 20200704 - 06 DOH Data Collect - Weekly Report.csv)
 
 ### Testing Aggregates
- * 2020-04.14
+ * [2020-07-07](data/DOH COVID Data Drop_ 20200704 - 07 Testing Aggregates.csv)
 
 
 This work and its contents is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br>
